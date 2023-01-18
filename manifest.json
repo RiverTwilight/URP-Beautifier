@@ -1,0 +1,25 @@
+{
+	"name": "URP Beautifier",
+	"manifest_version": 3,
+	"version": "1.0",
+	"host_permissions": ["http://10-28-63-116-8081-p.webvpn.swpu.edu.cn/*"],
+	"icons": {
+		"16": "src/static/icon/icon.png",
+		"48": "src/static/icon/icon.png",
+		"128": "src/static/icon/icon.png"
+	},
+	"permissions": ["activeTab", "contextMenus", "scripting"],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"action": {
+		"default_popup": "popup.html",
+		"default_title": "Download the score on this page."
+	},
+	"content_scripts": [
+		{
+			"matches": ["http://10-28-63-116-8081-p.webvpn.swpu.edu.cn/*"],
+			"js": ["content.js"]
+		}
+	]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "urp-beautifier",
+  "version": "1.0.0",
+  "description": "本插件解决了在[官网](http://cwjf.swpu.edu.cn/)的找不到缴费入口的问题。由于表单高度过低导致看不见缴费选项。",
+  "main": "background.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "preact": "^10.11.3"
+  }
+}
