@@ -19,7 +19,8 @@
 	"content_scripts": [
 		{
 			"matches": ["http://10-28-63-116-8081-p.webvpn.swpu.edu.cn/*"],
-			"js": ["dist/content.bundle.cjs.js"]
+			"js": ["dist/content.bundle.cjs.js"],
+			"css": ["src/static/css/global.css", "src/static/css/bolt.css", "src/static/css/login.css"]
 		}
 	]
 }

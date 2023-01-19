@@ -1,0 +1,25 @@
+.ub-loginBox {
+	background: var(--background-body);
+	width: 400px;
+    min-height: 400px;
+	height: fit-content;
+	border-radius: 30px;
+	padding: 50px;
+}
+
+body {
+	background-color: var(--background-main) !important;
+}
+
+.ub-validationImg {
+    display: block;
+	align-self: center;
+    height: fit-content;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#validation {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
