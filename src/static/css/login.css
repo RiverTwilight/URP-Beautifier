@@ -1,7 +1,7 @@
 .ub-loginBox {
 	background: var(--background-body);
-	width: 400px;
-    min-height: 400px;
+	width: 450px;
+	min-height: 400px;
 	height: fit-content;
 	border-radius: 30px;
 	padding: 50px;
@@ -11,15 +11,33 @@ body {
 	background-color: var(--background-main) !important;
 }
 
+.ub-validationField {
+	height: 60px;
+}
+
 .ub-validationImg {
-    display: block;
+	min-width: 40%;
+	height: inherit;
+	padding: 6px 0;
+	display: block;
 	align-self: center;
-    height: fit-content;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+}
+
+.ub-validationImg > img {
+	height: 100%;
+	width: 100%;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
 }
 
 #validation {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+	min-width: 60%;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.copyright {
+	color: var(--border);
+	text-align: center;
+	font-size: 0.9em;
 }

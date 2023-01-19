@@ -44,26 +44,31 @@ const LoginForm = () => {
 			</div>
 
 			<label for="validation">验证码</label>
-			<div className="DIS(flex)">
+
+			<div className="DIS(flex) ub-validationField">
 				<input
-					className="MW(50%)"
 					id="validation"
 					type="text"
 					name="v_yzm"
-					size="4"
+					maxLength="4"
 					alt="notnull"
 				></input>
-				<img
-					className="MW(50%) ub-validationImg"
-					src={codeImg}
-					id="vchart"
-				></img>
+				<div className="ub-validationImg">
+					<img
+						src={codeImg}
+						height="100%"
+						width="100%"
+						id="vchart"
+					></img>
+				</div>
 			</div>
+
+			<br></br>
 
 			<div className="MTB(10px) DIS(flex) JC(center) FD(column)">
 				<div className="DIS(flex) JC(center) FD(column) W(100%)">
 					<button onClick={() => login()}>登录</button>
-					<a onClick={() => login()}>重设</a>
+					{/* <a onClick={() => login()}>重设</a> */}
 				</div>
 			</div>
 		</form>
@@ -99,6 +104,13 @@ class LoginPage extends Page {
 								/>
 							</a>
 							<LoginForm />
+							<p className="copyright">
+								版权所有 © 北京清元优软科技有限公司
+								<br></br>
+								保留所有权利。
+								<br></br>
+								Redesign By @RiverTwilight
+							</p>
 						</div>
 					</div>
 				</div>
