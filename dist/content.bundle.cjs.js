@@ -99,7 +99,7 @@ const LoginForm = () => {
     onClick: () => login()
   }, "\u767B\u5F55"))));
 };
-let LoginPage$1 = class LoginPage extends Page {
+class LoginPage extends Page {
   constructor() {
     super();
     this.url = "/login";
@@ -132,21 +132,25 @@ let LoginPage$1 = class LoginPage extends Page {
       className: "copyright"
     }, "\u7248\u6743\u6240\u6709 \xA9 \u5317\u4EAC\u6E05\u5143\u4F18\u8F6F\u79D1\u6280\u6709\u9650\u516C\u53F8", h$1("br", null), "\u4FDD\u7559\u6240\u6709\u6743\u5229\u3002", h$1("br", null), "Redesign By @RiverTwilight"))))), document.body);
   }
-};
+}
 
-class LoginPage extends Page {
+class PanelPage extends Page {
   constructor() {
     super();
     this.url = "/login";
     this.title = "Login";
-    this.content = "Login Page";
-    this.mixOriginalPage();
+    this.initPage();
     this.injectNewPage();
   }
-  mixOriginalPage() {
-    this.originalPage.getElementsByTagName("form").item(0).name = "_loginForm";
+  initPage() {
+    const originalBody = document.getElementsByTagName("frameset").item(0);
+    const newBody = document.createElement("body");
+    originalBody.parentNode.replaceChild(newBody, originalBody);
+    this.originalPage = originalBody.innerHTML;
+    originalBody.innerHTML = "";
   }
   injectNewPage() {
+    console.log(123);
     P(h$1("main", {
       style: {
         height: "100vh"
@@ -172,7 +176,7 @@ class LoginPage extends Page {
 (function main() {
   console.log("Copy right @RiverTwilight");
   disableStyle();
-  isLogged() ? new LoginPage(window.location.pathname) : new LoginPage$1(window.location.pathname);
+  isLogged() ? new PanelPage(window.location.pathname) : new LoginPage(window.location.pathname);
 })();
 function disableStyle() {
   document.querySelectorAll("link[href='/css/newcss/project.css']").forEach(sheet => sheet.disabled = true);

@@ -74,22 +74,27 @@ const LoginForm = () => {
 	);
 };
 
-class LoginPage extends Page {
+class PanelPage extends Page {
 	constructor() {
 		super();
 		this.url = "/login";
 		this.title = "Login";
-		this.content = "Login Page";
-		this.mixOriginalPage();
+        this.initPage()
 		this.injectNewPage();
 	}
 
-	mixOriginalPage() {
-		this.originalPage.getElementsByTagName("form").item(0).name =
-			"_loginForm";
+	initPage() {
+		const originalBody = document.getElementsByTagName("frameset").item(0);
+		const newBody = document.createElement("body");
+
+		originalBody.parentNode.replaceChild(newBody, originalBody);
+
+		this.originalPage = originalBody.innerHTML;
+		originalBody.innerHTML = "";
 	}
 
 	injectNewPage() {
+		console.log(123);
 		render(
 			<main style={{ height: "100vh" }}>
 				<div className="DIS(flex) JC(center) FD(row) H(100%)">
@@ -120,4 +125,4 @@ class LoginPage extends Page {
 	}
 }
 
-export default LoginPage;
+export default PanelPage;
