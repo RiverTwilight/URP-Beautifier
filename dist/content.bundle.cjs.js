@@ -99,7 +99,7 @@ const LoginForm = () => {
     onClick: () => login()
   }, "\u767B\u5F55"))));
 };
-class LoginPage extends Page {
+let LoginPage$1 = class LoginPage extends Page {
   constructor() {
     super();
     this.url = "/login";
@@ -132,13 +132,51 @@ class LoginPage extends Page {
       className: "copyright"
     }, "\u7248\u6743\u6240\u6709 \xA9 \u5317\u4EAC\u6E05\u5143\u4F18\u8F6F\u79D1\u6280\u6709\u9650\u516C\u53F8", h$1("br", null), "\u4FDD\u7559\u6240\u6709\u6743\u5229\u3002", h$1("br", null), "Redesign By @RiverTwilight"))))), document.body);
   }
+};
+
+class LoginPage extends Page {
+  constructor() {
+    super();
+    this.url = "/login";
+    this.title = "Login";
+    this.content = "Login Page";
+    this.mixOriginalPage();
+    this.injectNewPage();
+  }
+  mixOriginalPage() {
+    this.originalPage.getElementsByTagName("form").item(0).name = "_loginForm";
+  }
+  injectNewPage() {
+    P(h$1("main", {
+      style: {
+        height: "100vh"
+      }
+    }, h$1("div", {
+      className: "DIS(flex) JC(center) FD(row) H(100%)"
+    }, h$1("div", {
+      className: "DIS(flex) JC(center) FD(column)"
+    }, h$1("div", {
+      className: "ub-loginBox"
+    }, h$1("a", {
+      href: "https://ibb.co/VQfvJ2C"
+    }, h$1("img", {
+      src: chrome.runtime.getURL("/img/logo_landscape_dark.png"),
+      alt: "URP",
+      border: "0"
+    })), h$1("p", {
+      className: "copyright"
+    }, "\u7248\u6743\u6240\u6709 \xA9 \u5317\u4EAC\u6E05\u5143\u4F18\u8F6F\u79D1\u6280\u6709\u9650\u516C\u53F8", h$1("br", null), "\u4FDD\u7559\u6240\u6709\u6743\u5229\u3002", h$1("br", null), "Redesign By @RiverTwilight"))))), document.body);
+  }
 }
 
 (function main() {
   console.log("Copy right @RiverTwilight");
   disableStyle();
-  new LoginPage(window.location.pathname);
+  isLogged() ? new LoginPage(window.location.pathname) : new LoginPage$1(window.location.pathname);
 })();
 function disableStyle() {
   document.querySelectorAll("link[href='/css/newcss/project.css']").forEach(sheet => sheet.disabled = true);
+}
+function isLogged() {
+  return !document.title.includes("登录");
 }
