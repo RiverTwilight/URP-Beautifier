@@ -4,9 +4,9 @@
 	"version": "1.0",
 	"host_permissions": ["http://10-28-63-116-8081-p.webvpn.swpu.edu.cn/*"],
 	"icons": {
-		"16": "src/static/icon/icon.png",
-		"48": "src/static/icon/icon.png",
-		"128": "src/static/icon/icon.png"
+		"16": "./icon/icon.png",
+		"48": "./icon/icon.png",
+		"128": "./icon/icon.png"
 	},
 	"permissions": ["activeTab", "contextMenus", "scripting"],
 	"background": {
@@ -19,8 +19,21 @@
 	"content_scripts": [
 		{
 			"matches": ["http://10-28-63-116-8081-p.webvpn.swpu.edu.cn/*"],
-			"js": ["dist/content.bundle.cjs.js"],
-			"css": ["src/static/css/global.css", "src/static/css/bolt.css", "src/static/css/login.css"]
+			"js": ["content.bundle.cjs.js"],
+			"css": [
+				"./css/global.css",
+				"./css/bolt.css",
+				"./css/login.css"
+			]
+		}
+	],
+	"web_accessible_resources": [
+		{
+			"matches": ["http://10-28-63-116-8081-p.webvpn.swpu.edu.cn/*"],
+			"resources": [
+				"/img/logo_landscape_dark.png",
+				"/img/logo_landscape_light.png"
+			]
 		}
 	]
 }

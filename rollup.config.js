@@ -13,13 +13,13 @@ export default [
 			{
 				file: "dist/content.bundle.cjs.js",
 				format: "cjs",
-				sourcemap: true,
+				sourcemap: false,
 			},
-			{
-				file: "dist/content.bundle.esm.js",
-				format: "esm",
-				sourcemap: true,
-			},
+			// {
+			// 	file: "dist/content.bundle.esm.js",
+			// 	format: "esm",
+			// 	sourcemap: true,
+			// },
 		],
 		plugins: [
 			alias({
