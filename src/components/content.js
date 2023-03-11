@@ -7,9 +7,15 @@ import PanelPage from "../pages/panel.jsx";
 	disableStyle();
 
 	if (isLogged()) {
-		new PanelPage(window.location.pathname);
+		switch (window.location.pathname) {
+			case "/loginAction.do":
+				console.log("登录成功");
+				new PanelPage(window.location.pathname);
+				break;
+			default:
+				document.body.style.background = "black"
+		}
 	} else {
-		console.log("登录成功");
 		new LoginPage(window.location.pathname);
 	}
 })();

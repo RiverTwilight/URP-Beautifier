@@ -9,6 +9,7 @@
 
 body {
 	background-color: var(--background-main) !important;
+	overflow-y: hidden;
 }
 
 .ub-validationField {
@@ -54,3 +55,10 @@ body {
 	text-decoration: none;
 }
 
+#intereactive {
+	width: 100%;
+}
+
+iframe, frame, frameset {
+	border: none;
+}

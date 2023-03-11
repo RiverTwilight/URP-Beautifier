@@ -16,8 +16,10 @@
 	"dependencies": {
 		"htm": "^3.1.1",
 		"preact": "^10.11.3",
+		"preact-router": "^4.1.0",
 		"react": "npm:@preact/compat",
-		"react-dom": "npm:@preact/compat"
+		"react-dom": "npm:@preact/compat",
+		"react-router-dom": "^6.9.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.20.12",

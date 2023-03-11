@@ -21,6 +21,7 @@ const rawConfig = {
 	content_scripts: [
 		{
 			matches: [],
+			all_frames: true,
 			js: ["content.bundle.cjs.js"],
 			css: ["./css/global.css", "./css/bolt.css", "./css/login.css"],
 		},
