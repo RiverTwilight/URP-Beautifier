@@ -1,8 +1,8 @@
 import { render, h, Component } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import Page from "../utils/page";
-import Router from "preact-router";
 import Course from "./Subpage/Course.jsx";
+import Home from "./Subpage/Home.jsx";
 
 const HashRouter = [
 	{
@@ -19,12 +19,12 @@ const HashRouter = [
 	},
 	{
 		hash: "#Home",
-		component: () => <div>我需留意</div>,
+		component: Home,
 	},
 ];
 
 function MainView() {
-	const [hash, setHash] = useState("#Course");
+	const [hash, setHash] = useState("#Home");
 
 	window.location.hash = hash;
 
@@ -38,7 +38,7 @@ function MainView() {
 		backgroundColor: "#333",
 		color: "#fff",
 		height: "100vh",
-		padding: "20px",
+		padding: "20px 0",
 		width: "200px",
 	};
 
@@ -48,17 +48,11 @@ function MainView() {
 	};
 
 	const menuItems = [
-		{ label: "我须留意", url: "#Home" },
+		{ label: "我须留意", url: "#Home", children: [] },
 		{ label: "选课管理", url: "#Course" },
 		{ label: "教学评估", url: "#Review" },
 		{ label: "考务管理", url: "#Examination" },
 		{ label: "综合查询", url: "#Query" },
-	];
-
-	const subMenuItems = [
-		{ label: "Subtab 1", url: "#Query" },
-		{ label: "Subtab 2", url: "#Query" },
-		{ label: "Subtab 3", url: "#Query" },
 	];
 
 	const Comp = HashRouter.find(
@@ -70,7 +64,11 @@ function MainView() {
 			<nav style={sidebarStyle} className="sidebar">
 				<ul role="list">
 					{menuItems.map((item) => (
-						<li>
+						<li
+							className={`${
+								window.location.hash == item.url ? "active" : ""
+							}`}
+						>
 							<a href={item.url}>{item.label}</a>
 						</li>
 					))}
@@ -108,7 +106,6 @@ class PanelPage extends Page {
 
 		this.originalPage = originalBody.innerHTML;
 		originalBody.innerHTML = "";
-
 	}
 
 	injectNewPage() {

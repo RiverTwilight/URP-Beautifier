@@ -12,8 +12,6 @@ import PanelPage from "../pages/panel.jsx";
 				console.log("登录成功");
 				new PanelPage(window.location.pathname);
 				break;
-			default:
-				document.body.style.background = "black"
 		}
 	} else {
 		new LoginPage(window.location.pathname);

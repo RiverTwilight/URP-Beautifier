@@ -49,7 +49,17 @@ body {
 	line-height: 50px;
 	text-decoration: none;
 	font-size: 1.1em;
+	text-align: center;
 }
+
+.sidebar li:hover {
+	background-color: var(--background-body);
+}
+
+.sidebar li.active {
+	background-color: var(--background-main);
+}
+
 
 .sidebar a{
 	text-decoration: none;
