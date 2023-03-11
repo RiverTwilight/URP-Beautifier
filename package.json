@@ -5,6 +5,7 @@
 	"main": "background.js",
 	"type": "module",
 	"scripts": {
+		"predev": "node ./src/utils/init.js",
 		"dev": "rollup -c -w",
 		"build": "rollup -c",
 		"build:content": "rollup ./src/components/content.js --file ./dist/content.bundle.js",

@@ -1,5 +1,5 @@
 import LoginPage from "../pages/login.jsx";
-import PanelPage from "../pages/panel.jsx"
+import PanelPage from "../pages/panel.jsx";
 
 (function main() {
 	console.log("Copy right @RiverTwilight");
@@ -18,5 +18,5 @@ function disableStyle() {
 }
 
 function isLogged() {
-	return !document.title.includes("登录")
+	return !document.title.includes("登录");
 }
