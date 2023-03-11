@@ -13,7 +13,7 @@
 		"48": "./icon/icon-192-maskable.png",
 		"128": "./icon/icon-192-maskable.png"
 	},
-	"permissions": ["activeTab", "contextMenus", "scripting"],
+	"permissions": ["scripting"],
 	"background": { "service_worker": "background.js" },
 	"action": {
 		"default_popup": "popup.html",

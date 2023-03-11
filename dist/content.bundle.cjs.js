@@ -15,7 +15,6 @@ class Page {
   hideOriginalPage() {
     const container = document.createElement("div");
     container.innerHTML = document.body.innerHTML;
-    console.log(container);
     this.originalPage = container;
     container.remove();
     document.body.innerHTML = "";
@@ -237,8 +236,6 @@ class PanelPage extends Page {
         console.log("登录成功");
         new PanelPage(window.location.pathname);
         break;
-      default:
-        document.body.style.background = "black";
     }
   } else {
     new LoginPage(window.location.pathname);

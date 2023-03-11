@@ -14,7 +14,6 @@ class Page {
 		const container = document.createElement("div");
 
 		container.innerHTML = document.body.innerHTML;
-		console.log(container);
 		this.originalPage = container;
 
 		container.remove();
