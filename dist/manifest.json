@@ -9,9 +9,9 @@
 		"http://10.28.63.111:9002/*"
 	],
 	"icons": {
-		"16": "./icon/icon.png",
-		"48": "./icon/icon.png",
-		"128": "./icon/icon.png"
+		"16": "./icon/icon-192-maskable.png",
+		"48": "./icon/icon-192-maskable.png",
+		"128": "./icon/icon-192-maskable.png"
 	},
 	"permissions": ["activeTab", "contextMenus", "scripting"],
 	"background": { "service_worker": "background.js" },
