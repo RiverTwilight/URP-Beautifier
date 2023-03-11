@@ -15,7 +15,7 @@ const HashRouter = [
 	},
 	{
 		hash: "#Personal",
-		component: () => <div>个人管理</div>,
+		component: Home,
 	},
 	{
 		hash: "#Home",
@@ -40,6 +40,7 @@ function MainView() {
 		height: "100vh",
 		padding: "20px 0",
 		width: "200px",
+		position: "relative",
 	};
 
 	const contentStyle = {
@@ -60,29 +61,30 @@ function MainView() {
 	).component;
 
 	return (
-		<div className="DIS(flex)">
-			<nav style={sidebarStyle} className="sidebar">
-				<ul role="list">
-					{menuItems.map((item) => (
-						<li
-							className={`${
-								window.location.hash == item.url ? "active" : ""
-							}`}
-						>
-							<a href={item.url}>{item.label}</a>
-						</li>
-					))}
-				</ul>
-				<button>退出登录</button>
-			</nav>
-			<main style={contentStyle}>
-				{/* <nav className="DIS(flex)">
-					{subMenuItems.map((item) => (
-						<a href={item.url}>{item.label}</a>
-					))}
-				</nav> */}
-				<section id="intereactive">
-					<Comp key={hash} />
+		<div className="DIS(flex) JC(center)">
+			<main className="DIS(flex)">
+				<nav style={sidebarStyle} className="sidebar">
+					<ul role="list">
+						{menuItems.map((item) => (
+							<li
+								className={`${
+									window.location.hash == item.url
+										? "active"
+										: ""
+								}`}
+							>
+								<a href={item.url}>{item.label}</a>
+							</li>
+						))}
+					</ul>
+					<div className="DIS(flex) JC(center) signout">
+						<button>退出登录</button>
+					</div>
+				</nav>
+				<section style={contentStyle}>
+					<section id="intereactive">
+						<Comp key={hash} />
+					</section>
 				</section>
 			</main>
 		</div>

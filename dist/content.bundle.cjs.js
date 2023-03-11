@@ -155,7 +155,7 @@ const HashRouter = [{
   component: () => h$1("div", null, "asdfa")
 }, {
   hash: "#Personal",
-  component: () => h$1("div", null, "\u4E2A\u4EBA\u7BA1\u7406")
+  component: Home
 }, {
   hash: "#Home",
   component: Home
@@ -173,7 +173,8 @@ function MainView() {
     color: "#fff",
     height: "100vh",
     padding: "20px 0",
-    width: "200px"
+    width: "200px",
+    position: "relative"
   };
   const contentStyle = {
     padding: "0px 10px",
@@ -198,6 +199,8 @@ function MainView() {
   }];
   const Comp = HashRouter.find(route => route.hash == window.location.hash).component;
   return h$1("div", {
+    className: "DIS(flex) JC(center)"
+  }, h$1("main", {
     className: "DIS(flex)"
   }, h$1("nav", {
     style: sidebarStyle,
@@ -208,13 +211,15 @@ function MainView() {
     className: `${window.location.hash == item.url ? "active" : ""}`
   }, h$1("a", {
     href: item.url
-  }, item.label)))), h$1("button", null, "\u9000\u51FA\u767B\u5F55")), h$1("main", {
+  }, item.label)))), h$1("div", {
+    className: "DIS(flex) JC(center) signout"
+  }, h$1("button", null, "\u9000\u51FA\u767B\u5F55"))), h$1("section", {
     style: contentStyle
   }, h$1("section", {
     id: "intereactive"
   }, h$1(Comp, {
     key: hash
-  }))));
+  })))));
 }
 class PanelPage extends Page {
   constructor() {
@@ -242,9 +247,15 @@ class PanelPage extends Page {
   if (isLogged()) {
     switch (window.location.pathname) {
       case "/loginAction.do":
-        console.log("登录成功");
         new PanelPage(window.location.pathname);
         break;
+      case "/xkAction.do":
+        document.querySelectorAll(".Linetop").forEach(item => {
+          item.remove();
+        });
+        break;
+      default:
+        console.log("No page matched");
     }
   } else {
     new LoginPage(window.location.pathname);

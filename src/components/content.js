@@ -9,9 +9,15 @@ import PanelPage from "../pages/panel.jsx";
 	if (isLogged()) {
 		switch (window.location.pathname) {
 			case "/loginAction.do":
-				console.log("登录成功");
 				new PanelPage(window.location.pathname);
 				break;
+			case "/xkAction.do":
+				document.querySelectorAll(".Linetop").forEach(item => {
+					item.remove()
+				})
+				break;
+			default:
+				console.log("No page matched")
 		}
 	} else {
 		new LoginPage(window.location.pathname);

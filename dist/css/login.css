@@ -43,7 +43,7 @@ body {
 	font-size: 0.9em;
 }
 
-.sidebar li{
+.sidebar li {
 	height: 50px;
 	width: 100%;
 	line-height: 50px;
@@ -60,8 +60,7 @@ body {
 	background-color: var(--background-main);
 }
 
-
-.sidebar a{
+.sidebar a {
 	text-decoration: none;
 }
 
@@ -69,6 +68,20 @@ body {
 	width: 100%;
 }
 
-iframe, frame, frameset {
+iframe,
+frame,
+frameset {
 	border: none;
+}
+
+.signout {
+	position: absolute;
+	bottom: 15;
+	left: 0;
+	right: 0;
+}
+
+main {
+	min-width: 80vw;
+	max-width: 1400px;
 }
