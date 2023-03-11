@@ -6,9 +6,12 @@ import PanelPage from "../pages/panel.jsx";
 
 	disableStyle();
 
-	const currentPage = isLogged()
-		? new PanelPage(window.location.pathname)
-		: new LoginPage(window.location.pathname);
+	if (isLogged()) {
+		new PanelPage(window.location.pathname);
+	} else {
+		console.log("登录成功");
+		new LoginPage(window.location.pathname);
+	}
 })();
 
 function disableStyle() {

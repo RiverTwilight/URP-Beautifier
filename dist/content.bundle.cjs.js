@@ -150,33 +150,65 @@ class PanelPage extends Page {
     originalBody.innerHTML = "";
   }
   injectNewPage() {
-    console.log(123);
-    P(h$1("main", {
-      style: {
-        height: "100vh"
-      }
-    }, h$1("div", {
-      className: "DIS(flex) JC(center) FD(row) H(100%)"
-    }, h$1("div", {
-      className: "DIS(flex) JC(center) FD(column)"
-    }, h$1("div", {
-      className: "ub-loginBox"
-    }, h$1("a", {
-      href: "https://ibb.co/VQfvJ2C"
-    }, h$1("img", {
-      src: chrome.runtime.getURL("/img/logo_landscape_dark.png"),
-      alt: "URP",
-      border: "0"
-    })), h$1("p", {
-      className: "copyright"
-    }, "\u7248\u6743\u6240\u6709 \xA9 \u5317\u4EAC\u6E05\u5143\u4F18\u8F6F\u79D1\u6280\u6709\u9650\u516C\u53F8", h$1("br", null), "\u4FDD\u7559\u6240\u6709\u6743\u5229\u3002", h$1("br", null), "Redesign By @RiverTwilight"))))), document.body);
+    const sidebarStyle = {
+      backgroundColor: "#333",
+      color: "#fff",
+      height: "100vh",
+      padding: "20px",
+      width: "200px"
+    };
+    const contentStyle = {
+      marginLeft: "200px",
+      padding: "20px"
+    };
+    const menuItems = [{
+      label: "Dashboard",
+      url: "#dashboard"
+    }, {
+      label: "Users",
+      url: "#users"
+    }, {
+      label: "Settings",
+      url: "#settings"
+    }];
+    const subMenuItems = [{
+      label: "Subtab 1",
+      url: "#subtab1"
+    }, {
+      label: "Subtab 2",
+      url: "#subtab2"
+    }, {
+      label: "Subtab 3",
+      url: "#subtab3"
+    }];
+    P(h$1("div", {
+      className: "DIS(flex)"
+    }, h$1("nav", {
+      style: sidebarStyle,
+      className: "sidebar"
+    }, h$1("ul", {
+      role: "list"
+    }, menuItems.map(item => h$1("li", null, h$1("a", {
+      href: item.url
+    }, item.label))))), h$1("main", {
+      style: contentStyle
+    }, h$1("nav", {
+      className: "DIS(flex)"
+    }, h$1("ul", null, subMenuItems.map(item => h$1("li", null, h$1("a", {
+      href: item.url
+    }, item.label))))), h$1("section", null, h$1("h1", null, "Sub-level tab content goes here")))), document.body);
   }
 }
 
 (function main() {
   console.log("Copy right @RiverTwilight");
   disableStyle();
-  isLogged() ? new PanelPage(window.location.pathname) : new LoginPage(window.location.pathname);
+  if (isLogged()) {
+    new PanelPage(window.location.pathname);
+  } else {
+    console.log("登录成功");
+    new LoginPage(window.location.pathname);
+  }
 })();
 function disableStyle() {
   document.querySelectorAll("link[href='/css/newcss/project.css']").forEach(sheet => sheet.disabled = true);

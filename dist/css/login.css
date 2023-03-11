@@ -41,3 +41,16 @@ body {
 	text-align: center;
 	font-size: 0.9em;
 }
+
+.sidebar li{
+	height: 50px;
+	width: 100%;
+	line-height: 50px;
+	text-decoration: none;
+	font-size: 1.1em;
+}
+
+.sidebar a{
+	text-decoration: none;
+}
+
