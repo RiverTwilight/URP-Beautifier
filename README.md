@@ -14,7 +14,7 @@
 
 1. 下载`URP-Beautifier-1.0.0.zip`，解压缩。
 
-2. 打开 Chorme 浏览器，地址栏输入 chrome://extensions，回车。
+2. 打开 Chorme / Edge 浏览器，地址栏输入 chrome://extensions，回车。
 
 3. 在打开的页面中，打开右上角的"开发者模式”选项。
 

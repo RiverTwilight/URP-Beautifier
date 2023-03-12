@@ -6,9 +6,9 @@ const rawConfig = {
 	version: "1.0",
 	host_permissions: [],
 	icons: {
-		16: "./icon/icon.png",
-		48: "./icon/icon.png",
-		128: "./icon/icon.png",
+		16: "./icon/android-icon-36x36.png",
+		48: "./icon/android-icon-48x48.png",
+		128: "./icon/icon-128.png",
 	},
 	permissions: ["activeTab", "contextMenus", "scripting"],
 	background: {
@@ -23,7 +23,7 @@ const rawConfig = {
 			matches: [],
 			all_frames: true,
 			js: ["content.bundle.cjs.js"],
-			css: ["./css/global.css", "./css/bolt.css", "./css/login.css"],
+			css: ["./css/global.css", "./css/bolt.css", "./css/main.css"],
 		},
 	],
 	web_accessible_resources: [

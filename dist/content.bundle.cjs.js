@@ -319,7 +319,6 @@ function MainView() {
     width: "100%"
   };
   const currentRoute = Object.values(Router).find(route => route.path == hash);
-  console.log(currentRoute);
   const handleSignout = () => {
     window.open("/");
   };

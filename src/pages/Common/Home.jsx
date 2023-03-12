@@ -34,8 +34,6 @@ function MainView() {
 		(route) => route.path == hash
 	);
 
-	console.log(currentRoute)
-
 	const handleSignout = () => {
 		window.open("/");
 	};
