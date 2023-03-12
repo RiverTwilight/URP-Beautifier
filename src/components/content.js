@@ -8,7 +8,15 @@ import PanelPage from "../pages/Common/Home.jsx";
 	disableStyle();
 
 	if (isLogged()) {
-		removeScatters([".Linetop", "#tblHead"]);
+		removeScatters([".Linetop", "#tblHead", "img[src='/img/icon/alert.gif']"]);
+		const errorMessage = document.querySelectorAll("table.error");
+		if(errorMessage.length > 0){
+			errorMessage.forEach(item => {
+				item.remove();
+			})
+			new EmptyPage()
+		}
+
 		switch (window.location.pathname) {
 			case "/loginAction.do":
 				new PanelPage(window.location.pathname);
