@@ -4,10 +4,6 @@ class Page {
 	constructor(url) {
 		this.url = url;
 		this.hideOriginalPage();
-		print(url)
-		switch(url){
-
-		}
 	}
 
 	hideOriginalPage() {

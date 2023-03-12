@@ -10,7 +10,6 @@ class Page {
   constructor(url) {
     this.url = url;
     this.hideOriginalPage();
-    print(url);
   }
   hideOriginalPage() {
     const container = document.createElement("div");
@@ -109,7 +108,7 @@ class LoginPage extends Page {
     this.originalPage.getElementsByTagName("form").item(0).name = "_loginForm";
   }
   injectNewPage() {
-    P(h$1("main", {
+    P(h$1("div", {
       style: {
         height: "100vh"
       }
@@ -131,37 +130,84 @@ class LoginPage extends Page {
   }
 }
 
-var Course = (() => {
-  return h$1("iframe", {
+var Router = {
+  notice: {
+    title: "我须留意",
+    path: "#Notice",
+    children: [{
+      title: "查看消息",
+      path: "xsxxviewAction.do"
+    }, {
+      title: "常用文件下载",
+      path: "ileUploadDownloadAction.do?actionType=4"
+    }]
+  },
+  course: {
+    title: "选课管理",
+    path: "#Course",
+    children: [{
+      title: "本学期课表",
+      path: "xkAction.do?actionType=6"
+    }]
+  },
+  personal: {
+    title: "个人管理",
+    path: "#Personal",
+    children: [{
+      title: "学籍信息",
+      path: "xjInfoAction.do?oper=xjxx"
+    }]
+  },
+  exam: {
+    title: "考务管理",
+    path: "#Exam",
+    children: []
+  },
+  resource: {
+    title: "教学资源",
+    path: "#Resource",
+    children: []
+  },
+  query: {
+    title: "综合查询",
+    path: "#Query",
+    children: []
+  }
+};
+
+var Frame = (({
+  url,
+  title
+}) => {
+  return h$1("div", null, h$1("h1", null, title), h$1("iframe", {
     width: "100%",
     height: "100%",
-    src: "/xkAction.do?actionType=6"
-  });
+    src: url
+  }));
 });
 
-var Home = (() => {
-  return h$1("iframe", {
-    width: "100%",
-    height: "100%",
-    src: "/outlineAction.do"
-  });
+var Subpage = (({
+  childRoute
+}) => {
+  const [tab, setTab] = p(childRoute[0].path);
+  const tabRoute = childRoute.find(route => route.path == tab);
+  return h$1("section", null, h$1("div", {
+    className: "DIS(flex)"
+  }, childRoute.map(route => {
+    return h$1("div", {
+      onClick: () => {
+        setTab(route.path);
+      },
+      className: `${tab == route.path ? "active" : ""} tab`
+    }, route.title);
+  })), h$1(Frame, {
+    url: tabRoute.path,
+    title: tabRoute.title
+  }));
 });
 
-const HashRouter = [{
-  hash: "#Course",
-  component: Course
-}, {
-  hash: "#Query",
-  component: () => h$1("div", null, "asdfa")
-}, {
-  hash: "#Personal",
-  component: Home
-}, {
-  hash: "#Home",
-  component: Home
-}];
 function MainView() {
-  const [hash, setHash] = p("#Home");
+  const [hash, setHash] = p("#Notice");
   window.location.hash = hash;
   h(() => {
     window.addEventListener("hashchange", () => {
@@ -180,24 +226,11 @@ function MainView() {
     padding: "0px 10px",
     width: "100%"
   };
-  const menuItems = [{
-    label: "我须留意",
-    url: "#Home",
-    children: []
-  }, {
-    label: "选课管理",
-    url: "#Course"
-  }, {
-    label: "教学评估",
-    url: "#Review"
-  }, {
-    label: "考务管理",
-    url: "#Examination"
-  }, {
-    label: "综合查询",
-    url: "#Query"
-  }];
-  const Comp = HashRouter.find(route => route.hash == window.location.hash).component;
+  const currentRoute = Object.values(Router).find(route => route.path == window.location.hash);
+  console.log(currentRoute);
+  const handleSignout = () => {
+    window.open("/");
+  };
   return h$1("div", {
     className: "DIS(flex) JC(center)"
   }, h$1("main", {
@@ -207,18 +240,21 @@ function MainView() {
     className: "sidebar"
   }, h$1("ul", {
     role: "list"
-  }, menuItems.map(item => h$1("li", {
-    className: `${window.location.hash == item.url ? "active" : ""}`
+  }, Object.values(Router).map(item => h$1("li", {
+    className: `${window.location.hash == item.path ? "active" : ""}`
   }, h$1("a", {
-    href: item.url
-  }, item.label)))), h$1("div", {
+    href: item.path
+  }, item.title)))), h$1("div", {
     className: "DIS(flex) JC(center) signout"
-  }, h$1("button", null, "\u9000\u51FA\u767B\u5F55"))), h$1("section", {
+  }, h$1("button", {
+    onClick: handleSignout
+  }, "\u9000\u51FA\u767B\u5F55"))), h$1("section", {
     style: contentStyle
   }, h$1("section", {
     id: "intereactive"
-  }, h$1(Comp, {
-    key: hash
+  }, h$1(Subpage, {
+    key: hash,
+    childRoute: currentRoute.children
   })))));
 }
 class PanelPage extends Page {
@@ -245,14 +281,14 @@ class PanelPage extends Page {
   console.log("Copy right @RiverTwilight");
   disableStyle();
   if (isLogged()) {
+    document.querySelectorAll(".Linetop").forEach(item => {
+      item.remove();
+    });
     switch (window.location.pathname) {
       case "/loginAction.do":
         new PanelPage(window.location.pathname);
         break;
       case "/xkAction.do":
-        document.querySelectorAll(".Linetop").forEach(item => {
-          item.remove();
-        });
         break;
       default:
         console.log("No page matched");

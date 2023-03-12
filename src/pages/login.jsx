@@ -91,7 +91,7 @@ class LoginPage extends Page {
 
 	injectNewPage() {
 		render(
-			<main style={{ height: "100vh" }}>
+			<div style={{ height: "100vh" }}>
 				<div className="DIS(flex) JC(center) FD(row) H(100%)">
 					<div className="DIS(flex) JC(center) FD(column)">
 						<div className="ub-loginBox">
@@ -115,7 +115,7 @@ class LoginPage extends Page {
 						</div>
 					</div>
 				</div>
-			</main>,
+			</div>,
 			document.body
 		);
 	}

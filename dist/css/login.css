@@ -38,7 +38,7 @@ body {
 }
 
 .copyright {
-	color: var(--border);
+	color: var(--text);
 	text-align: center;
 	font-size: 0.9em;
 }
@@ -66,6 +66,7 @@ body {
 
 #intereactive {
 	width: 100%;
+	padding: 20px 30px;
 }
 
 iframe,
@@ -84,4 +85,19 @@ frameset {
 main {
 	min-width: 80vw;
 	max-width: 1400px;
+}
+
+.tab {
+	color: var(--text);
+	height: 40px;
+	width: 120px;
+	line-height: 40px;
+	border-radius: 20px;
+	text-align: center;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.tab.active {
+	background-color: red;
 }
