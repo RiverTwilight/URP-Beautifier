@@ -28,7 +28,7 @@ export default {
 		path: "#Personal",
 		children: [
 			{
-				title: "学籍信息",
+				title: "🖨️学籍信息",
 				path: "xjInfoAction.do?oper=xjxx",
 			},
 			{
@@ -42,7 +42,7 @@ export default {
 		path: "#Exam",
 		children: [
 			{
-				title: "考试安排",
+				title: "✍️考试安排",
 				path: "ksApCxAction.do?oper=getKsapXx",
 			},
 			{
@@ -60,7 +60,7 @@ export default {
 		path: "#Resource",
 		children: [
 			{
-				title: "教室课表",
+				title: "🏫教室课表",
 				path: "jskbcxAction.do?oper=jskb_lb",
 			},
 			{
@@ -90,7 +90,7 @@ export default {
 		path: "#Review",
 		children: [
 			{
-				title: "评估公告",
+				title: "📤评估公告",
 				path: "ggglAction.do?actionType=5",
 			},
 			{
@@ -113,7 +113,27 @@ export default {
 		children: [
 			{
 				title: "全部及格成绩",
-				path: "gradeLnAllAction.do?type=ln&oper=qb",
+				path: "gradeLnAllAction.do?type=ln&oper=qbinfo&lnxndm=2022-2023%D1%A7%C4%EA%C7%EF(%C1%BD%D1%A7%C6%DA)",
+			},
+			{
+				title: "课程属性成绩",
+				path: "gradeLnAllAction.do?type=ln&oper=sx",
+			},
+			{
+				title: "方案成绩",
+				path: "gradeLnAllAction.do?type=ln&oper=fa",
+			},
+			{
+				title: "不及格成绩",
+				path: "gradeLnAllAction.do?type=ln&oper=bjg",
+			},
+			{
+				title: "本学期成绩",
+				path: "bxqcjcxAction.do",
+			},
+			{
+				title: "方案完成情况",
+				path: "gradeLnAllAction.do?type=ln&oper=lnfaqk&flag=zx",
 			},
 		],
 	},

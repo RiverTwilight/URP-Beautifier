@@ -112,3 +112,7 @@ main {
 .tab.active {
 	background-color: var(--c-themed);
 }
+
+.empty-notice {
+	margin-top: 30vh;
+}

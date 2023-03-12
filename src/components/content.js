@@ -1,5 +1,6 @@
-import LoginPage from "../pages/login.jsx";
-import PanelPage from "../pages/panel.jsx";
+import LoginPage from "../pages/Common/Login.jsx";
+import EmptyPage from "../pages/Common/Empty";
+import PanelPage from "../pages/Common/Home.jsx";
 
 (function main() {
 	console.log("Copy right @RiverTwilight");
@@ -12,6 +13,12 @@ import PanelPage from "../pages/panel.jsx";
 			case "/loginAction.do":
 				new PanelPage(window.location.pathname);
 				break;
+			case "/xsxxviewAction.do":
+				const message = document.querySelectorAll("#user tbody tr");
+				if (message.length === 0) {
+					document.querySelector("#user").remove();
+				}
+				new EmptyPage()
 			default:
 				console.log("No page matched");
 		}

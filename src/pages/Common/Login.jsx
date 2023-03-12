@@ -1,6 +1,6 @@
 import { render, h, Component } from "preact";
 import { useState, useEffect } from "preact/hooks";
-import Page from "../utils/page";
+import Page from "../../utils/page";
 
 const LoginForm = () => {
 	const [codeImg, setCodeImg] = useState("");

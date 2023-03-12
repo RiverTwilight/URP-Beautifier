@@ -1,8 +1,8 @@
 import { render, h, Component } from "preact";
 import { useState, useEffect } from "preact/hooks";
-import Page from "../utils/page";
-import Router from "../router/raw";
-import Subpage from "../components/Subpage";
+import Page from "../../utils/page";
+import Router from "../../router/raw";
+import Subpage from "../../components/subpage";
 
 function MainView() {
 	const [hash, setHash] = useState("#Notice");

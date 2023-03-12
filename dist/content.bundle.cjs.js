@@ -130,6 +130,31 @@ class LoginPage extends Page {
   }
 }
 
+function MainView$1() {
+  return h$1("div", {
+    className: "DIS(flex) JC(center) empty-notice"
+  }, h$1("h3", null, "\u6682\u65F6\u6CA1\u6709\u5185\u5BB9"));
+}
+let PanelPage$1 = class PanelPage extends Page {
+  constructor() {
+    super();
+    this.url = "/login";
+    this.title = "Login";
+    this.initPage();
+    this.injectNewPage();
+  }
+  initPage() {
+    const originalBody = document.body;
+    const newBody = document.createElement("body");
+    originalBody.parentNode.replaceChild(newBody, originalBody);
+    this.originalPage = originalBody.innerHTML;
+    originalBody.innerHTML = "";
+  }
+  injectNewPage() {
+    P(h$1(MainView$1, null), document.body);
+  }
+};
+
 var Router = {
   notice: {
     title: "我须留意",
@@ -154,7 +179,7 @@ var Router = {
     title: "个人管理",
     path: "#Personal",
     children: [{
-      title: "学籍信息",
+      title: "🖨️学籍信息",
       path: "xjInfoAction.do?oper=xjxx"
     }, {
       title: "学籍异动",
@@ -165,7 +190,7 @@ var Router = {
     title: "考务管理",
     path: "#Exam",
     children: [{
-      title: "考试安排",
+      title: "✍️考试安排",
       path: "ksApCxAction.do?oper=getKsapXx"
     }, {
       title: "考试报名",
@@ -179,7 +204,7 @@ var Router = {
     title: "教学资源",
     path: "#Resource",
     children: [{
-      title: "教室课表",
+      title: "🏫教室课表",
       path: "jskbcxAction.do?oper=jskb_lb"
     }, {
       title: "教师课表",
@@ -202,7 +227,7 @@ var Router = {
     title: "教学评估",
     path: "#Review",
     children: [{
-      title: "评估公告",
+      title: "📤评估公告",
       path: "ggglAction.do?actionType=5"
     }, {
       title: "教学评估",
@@ -220,7 +245,22 @@ var Router = {
     path: "#Query",
     children: [{
       title: "全部及格成绩",
-      path: "gradeLnAllAction.do?type=ln&oper=qb"
+      path: "gradeLnAllAction.do?type=ln&oper=qbinfo&lnxndm=2022-2023%D1%A7%C4%EA%C7%EF(%C1%BD%D1%A7%C6%DA)"
+    }, {
+      title: "课程属性成绩",
+      path: "gradeLnAllAction.do?type=ln&oper=sx"
+    }, {
+      title: "方案成绩",
+      path: "gradeLnAllAction.do?type=ln&oper=fa"
+    }, {
+      title: "不及格成绩",
+      path: "gradeLnAllAction.do?type=ln&oper=bjg"
+    }, {
+      title: "本学期成绩",
+      path: "bxqcjcxAction.do"
+    }, {
+      title: "方案完成情况",
+      path: "gradeLnAllAction.do?type=ln&oper=lnfaqk&flag=zx"
     }]
   }
 };
@@ -339,6 +379,12 @@ class PanelPage extends Page {
       case "/loginAction.do":
         new PanelPage(window.location.pathname);
         break;
+      case "/xsxxviewAction.do":
+        const message = document.querySelectorAll("#user tbody tr");
+        if (message.length === 0) {
+          document.querySelector("#user").remove();
+        }
+        new PanelPage$1();
       default:
         console.log("No page matched");
     }
