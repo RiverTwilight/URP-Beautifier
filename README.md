@@ -8,15 +8,21 @@
 
 ## 使用方法 Usage
 
-点击链接访问 [chrome 插件商店](https://chrome.google.com/webstore/category/extensions?hl=en-US) 安装即可。如果无法打开页面，请参考以下步骤：
+点击链接访问 [chrome 插件商店](https://chrome.google.com/webstore/category/extensions?hl=en-US) 安装即可。
 
-1. 打开 Chorme 浏览器，地址栏输入 chrome://extensions，回车。
+如果无法打开页面，请参考以下步骤：
 
-2. 在打开的页面中，打开右上角的"开发者模式”选项。
+1. 下载`URP-Beautifier-1.0.0.zip`，解压缩。
 
-3. 点击页面上方三个按钮中第一个，加载未打包的扩展程序。
+2. 打开 Chorme 浏览器，地址栏输入 chrome://extensions，回车。
 
-4. 选择本文件夹即可，载入后刷新缴费页面即可修复
+3. 在打开的页面中，打开右上角的"开发者模式”选项。
+
+4. 点击页面上方三个按钮中第一个，加载未打包的扩展程序。
+
+5. 选择之前解压的文件夹，完成。
+
+此处以 Chrome 为例，同时支持 Firefox 和 Edge 浏览器.
 
 ## 贡献
 
