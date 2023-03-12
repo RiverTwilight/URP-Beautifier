@@ -39,6 +39,9 @@ function disableStyle() {
 	document
 		.querySelectorAll("link[href='/css/newcss/project.css']")
 		.forEach((sheet) => (sheet.disabled = true));
+	document
+		.querySelectorAll("link[href='/css/newcss/login.css']")
+		.forEach((sheet) => (sheet.disabled = true));
 }
 
 function removeScatters(selectors) {

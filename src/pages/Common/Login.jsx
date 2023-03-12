@@ -42,6 +42,8 @@ const LoginForm = () => {
 				></input>
 			</div>
 
+			<br />
+
 			<label for="validation">验证码</label>
 
 			<div className="DIS(flex) ub-validationField">

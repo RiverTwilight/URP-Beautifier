@@ -70,7 +70,7 @@ const LoginForm = () => {
     value: "",
     alt: "notnull",
     className: "MW(100%)"
-  })), h$1("label", {
+  })), h$1("br", null), h$1("label", {
     for: "validation"
   }, "\u9A8C\u8BC1\u7801"), h$1("div", {
     className: "DIS(flex) ub-validationField"
@@ -373,7 +373,14 @@ class PanelPage extends Page {
   console.log("Copy right @RiverTwilight");
   disableStyle();
   if (isLogged()) {
-    removeScatters([".Linetop", "#tblHead"]);
+    removeScatters([".Linetop", "#tblHead", "img[src='/img/icon/alert.gif']"]);
+    const errorMessage = document.querySelectorAll("table.error");
+    if (errorMessage.length > 0) {
+      errorMessage.forEach(item => {
+        item.remove();
+      });
+      new PanelPage$1();
+    }
     switch (window.location.pathname) {
       case "/loginAction.do":
         new PanelPage(window.location.pathname);
@@ -393,6 +400,7 @@ class PanelPage extends Page {
 })();
 function disableStyle() {
   document.querySelectorAll("link[href='/css/newcss/project.css']").forEach(sheet => sheet.disabled = true);
+  document.querySelectorAll("link[href='/css/newcss/login.css']").forEach(sheet => sheet.disabled = true);
 }
 function removeScatters(selectors) {
   selectors.forEach(selector => {

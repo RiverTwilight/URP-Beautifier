@@ -42,6 +42,8 @@ const MATCHES = [
 	"http://jwxt.swpu.edu.cn/*",
 	"http://10.28.63.111:9001/*",
 	"http://10.28.63.111:9002/*",
+	"http://10.28.63.111/",
+	"http://10.28.63.116:8081/",
 ];
 
 rawConfig["content_scripts"].forEach((script) => {
