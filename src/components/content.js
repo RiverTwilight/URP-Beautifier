@@ -7,14 +7,10 @@ import PanelPage from "../pages/panel.jsx";
 	disableStyle();
 
 	if (isLogged()) {
-		document.querySelectorAll(".Linetop").forEach((item) => {
-			item.remove();
-		});
+		removeScatters([".Linetop", "#tblHead"]);
 		switch (window.location.pathname) {
 			case "/loginAction.do":
 				new PanelPage(window.location.pathname);
-				break;
-			case "/xkAction.do":
 				break;
 			default:
 				console.log("No page matched");
@@ -28,6 +24,14 @@ function disableStyle() {
 	document
 		.querySelectorAll("link[href='/css/newcss/project.css']")
 		.forEach((sheet) => (sheet.disabled = true));
+}
+
+function removeScatters(selectors) {
+	selectors.forEach((selector) => {
+		document.querySelectorAll(selector).forEach((item) => {
+			item.remove();
+		});
+	});
 }
 
 function isLogged() {

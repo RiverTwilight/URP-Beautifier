@@ -3,7 +3,9 @@ import { useState, useEffect } from "preact/hooks";
 import Frame from "./frame";
 
 export default ({ childRoute }) => {
-	const [tab, setTab] = useState(childRoute[0].path);
+	const [tab, setTab] = useState(
+		childRoute[0].path || "xjInfoAction.do?oper=xjxx"
+	);
 
 	const tabRoute = childRoute.find((route) => route.path == tab);
 

@@ -7,19 +7,20 @@ import Subpage from "../components/Subpage";
 function MainView() {
 	const [hash, setHash] = useState("#Notice");
 
-	window.location.hash = hash;
-
 	useEffect(() => {
+		if (window.location.hash !== "") {
+			setHash(window.location.hash);
+		}
 		window.addEventListener("hashchange", () => {
 			setHash(window.location.hash);
 		});
-	});
+	}, []);
 
 	const sidebarStyle = {
 		backgroundColor: "#333",
 		color: "#fff",
 		height: "100vh",
-		padding: "20px 0",
+		padding: "0",
 		width: "200px",
 		position: "relative",
 	};
@@ -30,7 +31,7 @@ function MainView() {
 	};
 
 	const currentRoute = Object.values(Router).find(
-		(route) => route.path == window.location.hash
+		(route) => route.path == hash
 	);
 
 	console.log(currentRoute)
@@ -46,6 +47,7 @@ function MainView() {
 					<ul role="list">
 						{Object.values(Router).map((item) => (
 							<li
+								key={item.path}
 								className={`${
 									window.location.hash == item.path
 										? "active"

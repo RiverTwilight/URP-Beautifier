@@ -8,7 +8,6 @@
 }
 
 body {
-	background-color: var(--background-main) !important;
 	overflow-y: hidden;
 }
 
@@ -50,14 +49,25 @@ body {
 	text-decoration: none;
 	font-size: 1.1em;
 	text-align: center;
+	font-weight: bolder;
+}
+
+.sidebar ul {
+	transform: translateY(-20px);
+}
+
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .sidebar li:hover {
-	background-color: var(--background-body);
+	background-color: var(--background-main);
 }
 
 .sidebar li.active {
-	background-color: var(--background-main);
+	background-color: var(--background-body);
 }
 
 .sidebar a {
@@ -90,14 +100,15 @@ main {
 .tab {
 	color: var(--text);
 	height: 40px;
-	width: 120px;
 	line-height: 40px;
 	border-radius: 20px;
 	text-align: center;
 	overflow: hidden;
 	cursor: pointer;
+	margin-right: 10px;
+	padding: 0 1em;
 }
 
 .tab.active {
-	background-color: red;
+	background-color: var(--c-themed);
 }

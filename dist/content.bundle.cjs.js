@@ -135,10 +135,10 @@ var Router = {
     title: "我须留意",
     path: "#Notice",
     children: [{
-      title: "查看消息",
+      title: "✉️查看消息",
       path: "xsxxviewAction.do"
     }, {
-      title: "常用文件下载",
+      title: "📂常用文件下载",
       path: "ileUploadDownloadAction.do?actionType=4"
     }]
   },
@@ -146,7 +146,7 @@ var Router = {
     title: "选课管理",
     path: "#Course",
     children: [{
-      title: "本学期课表",
+      title: "📗本学期课表",
       path: "xkAction.do?actionType=6"
     }]
   },
@@ -156,22 +156,72 @@ var Router = {
     children: [{
       title: "学籍信息",
       path: "xjInfoAction.do?oper=xjxx"
+    }, {
+      title: "学籍异动",
+      path: "xjInfoAction.do?oper=ydxx"
     }]
   },
   exam: {
     title: "考务管理",
     path: "#Exam",
-    children: []
+    children: [{
+      title: "考试安排",
+      path: "ksApCxAction.do?oper=getKsapXx"
+    }, {
+      title: "考试报名",
+      path: "kwBmAction.do?oper=getKsList"
+    }, {
+      title: "考试成绩",
+      path: "cjSearchAction.do?oper=getKscjList"
+    }]
   },
   resource: {
     title: "教学资源",
     path: "#Resource",
-    children: []
+    children: [{
+      title: "教室课表",
+      path: "jskbcxAction.do?oper=jskb_lb"
+    }, {
+      title: "教师课表",
+      path: "lskbcxAction.do?oper=lskb_lb"
+    }, {
+      title: "班级课表",
+      path: "jkbcxAction.do?oper=bjkb_lb"
+    }, {
+      title: "课程课表",
+      path: "kckbcxAction.do?oper=kckb_lb"
+    }, {
+      title: "自习教室查询",
+      path: "xszxcxAction.do?oper=xszxcx_lb"
+    }, {
+      title: "教室使用查询",
+      path: "jxlCxAction.do?oper=ori"
+    }]
+  },
+  review: {
+    title: "教学评估",
+    path: "#Review",
+    children: [{
+      title: "评估公告",
+      path: "ggglAction.do?actionType=5"
+    }, {
+      title: "教学评估",
+      path: "jxpgXsAction.do?oper=listWj"
+    }, {
+      title: "毕业生评估",
+      path: "byspgXsAction.do?oper=listWj"
+    }, {
+      title: "教材评估",
+      path: "studentAction.do?oper=stu"
+    }]
   },
   query: {
     title: "综合查询",
     path: "#Query",
-    children: []
+    children: [{
+      title: "全部及格成绩",
+      path: "gradeLnAllAction.do?type=ln&oper=qb"
+    }]
   }
 };
 
@@ -189,7 +239,7 @@ var Frame = (({
 var Subpage = (({
   childRoute
 }) => {
-  const [tab, setTab] = p(childRoute[0].path);
+  const [tab, setTab] = p(childRoute[0].path || "xjInfoAction.do?oper=xjxx");
   const tabRoute = childRoute.find(route => route.path == tab);
   return h$1("section", null, h$1("div", {
     className: "DIS(flex)"
@@ -208,17 +258,19 @@ var Subpage = (({
 
 function MainView() {
   const [hash, setHash] = p("#Notice");
-  window.location.hash = hash;
   h(() => {
+    if (window.location.hash !== "") {
+      setHash(window.location.hash);
+    }
     window.addEventListener("hashchange", () => {
       setHash(window.location.hash);
     });
-  });
+  }, []);
   const sidebarStyle = {
     backgroundColor: "#333",
     color: "#fff",
     height: "100vh",
-    padding: "20px 0",
+    padding: "0",
     width: "200px",
     position: "relative"
   };
@@ -226,7 +278,7 @@ function MainView() {
     padding: "0px 10px",
     width: "100%"
   };
-  const currentRoute = Object.values(Router).find(route => route.path == window.location.hash);
+  const currentRoute = Object.values(Router).find(route => route.path == hash);
   console.log(currentRoute);
   const handleSignout = () => {
     window.open("/");
@@ -241,6 +293,7 @@ function MainView() {
   }, h$1("ul", {
     role: "list"
   }, Object.values(Router).map(item => h$1("li", {
+    key: item.path,
     className: `${window.location.hash == item.path ? "active" : ""}`
   }, h$1("a", {
     href: item.path
@@ -281,14 +334,10 @@ class PanelPage extends Page {
   console.log("Copy right @RiverTwilight");
   disableStyle();
   if (isLogged()) {
-    document.querySelectorAll(".Linetop").forEach(item => {
-      item.remove();
-    });
+    removeScatters([".Linetop", "#tblHead"]);
     switch (window.location.pathname) {
       case "/loginAction.do":
         new PanelPage(window.location.pathname);
-        break;
-      case "/xkAction.do":
         break;
       default:
         console.log("No page matched");
@@ -299,6 +348,13 @@ class PanelPage extends Page {
 })();
 function disableStyle() {
   document.querySelectorAll("link[href='/css/newcss/project.css']").forEach(sheet => sheet.disabled = true);
+}
+function removeScatters(selectors) {
+  selectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach(item => {
+      item.remove();
+    });
+  });
 }
 function isLogged() {
   return !document.title.includes("登录");
