@@ -124,9 +124,17 @@ class LoginPage extends Page {
     }, h$1("div", {
       className: "ub-loginBox"
     }, h$1("a", {
+      className: "darkOnly",
       href: ""
     }, h$1("img", {
       src: chrome.runtime.getURL("/img/logo_landscape_dark.png"),
+      alt: "URP",
+      border: "0"
+    })), h$1("a", {
+      className: "lightOnly",
+      href: ""
+    }, h$1("img", {
+      src: chrome.runtime.getURL("/img/logo_landscape_light.png"),
       alt: "URP",
       border: "0"
     })), h$1(LoginForm, null), h$1("p", {

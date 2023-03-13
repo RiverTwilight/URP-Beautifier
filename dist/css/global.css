@@ -41,6 +41,19 @@ body {
 	line-height: 1.5;
 }
 
+.darkOnly {
+	display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+	.lightOnly {
+		display: none;
+	}
+	.darkOnly {
+		display: unset;
+	}
+}
+
 /* A elements that don't have a class get default styles */
 a:not([class]) {
 	text-decoration-skip-ink: auto;
