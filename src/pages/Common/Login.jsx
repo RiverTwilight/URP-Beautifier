@@ -112,7 +112,10 @@ class LoginPage extends Page {
 								<br></br>
 								保留所有权利。
 								<br></br>
-								Redesign By @RiverTwilight
+								Redesign with ❤️ By 
+								<a href="https://github.com/rivertwilight">
+									&nbsp;@RiverTwilight
+								</a>
 							</p>
 						</div>
 					</div>

@@ -18,7 +18,7 @@ function MainView() {
 
 	const sidebarStyle = {
 		backgroundColor: "#333",
-		color: "#fff",
+		color: "var(--c-themed)",
 		height: "100vh",
 		padding: "0",
 		width: "200px",

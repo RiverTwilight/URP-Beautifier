@@ -10,8 +10,8 @@ export default ({ childRoute }) => {
 	const tabRoute = childRoute.find((route) => route.path == tab);
 
 	return (
-		<section>
-			<div className="DIS(flex)">
+		<div>
+			<div className="DIS(flex) JC(center) tab-container">
 				{childRoute.map((route) => {
 					return (
 						<div
@@ -27,7 +27,10 @@ export default ({ childRoute }) => {
 					);
 				})}
 			</div>
-			<Frame url={tabRoute.path} title={tabRoute.title} />
-		</section>
+			<br />
+			<div id="framebody">
+				<Frame url={tabRoute.path} title={tabRoute.title} />
+			</div>
+		</div>
 	);
 };

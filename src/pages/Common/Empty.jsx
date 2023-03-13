@@ -3,8 +3,16 @@ import Page from "../../utils/page";
 
 function MainView() {
 	return (
-		<div className="DIS(flex) JC(center) empty-notice">
-			<h3>暂时没有内容</h3>
+		<div style={{ height: "100%" }} className="DIS(flex) JC(center)">
+			<div className="empty-notice">
+				<img
+					width={200}
+					src={chrome.runtime.getURL(
+						"/img/undraw_no_data_re_kwbl.svg"
+					)}
+				/>
+				<h3 className="Texta(center)">暂时没有内容</h3>
+			</div>
 		</div>
 	);
 }

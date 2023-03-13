@@ -126,14 +126,26 @@ class LoginPage extends Page {
       border: "0"
     })), h$1(LoginForm, null), h$1("p", {
       className: "copyright"
-    }, "\u7248\u6743\u6240\u6709 \xA9 \u5317\u4EAC\u6E05\u5143\u4F18\u8F6F\u79D1\u6280\u6709\u9650\u516C\u53F8", h$1("br", null), "\u4FDD\u7559\u6240\u6709\u6743\u5229\u3002", h$1("br", null), "Redesign By @RiverTwilight"))))), document.body);
+    }, "\u7248\u6743\u6240\u6709 \xA9 \u5317\u4EAC\u6E05\u5143\u4F18\u8F6F\u79D1\u6280\u6709\u9650\u516C\u53F8", h$1("br", null), "\u4FDD\u7559\u6240\u6709\u6743\u5229\u3002", h$1("br", null), "Redesign with \u2764\uFE0F By", h$1("a", {
+      href: "https://github.com/rivertwilight"
+    }, "\xA0@RiverTwilight")))))), document.body);
   }
 }
 
 function MainView$1() {
   return h$1("div", {
-    className: "DIS(flex) JC(center) empty-notice"
-  }, h$1("h3", null, "\u6682\u65F6\u6CA1\u6709\u5185\u5BB9"));
+    style: {
+      height: "100%"
+    },
+    className: "DIS(flex) JC(center)"
+  }, h$1("div", {
+    className: "empty-notice"
+  }, h$1("img", {
+    width: 200,
+    src: chrome.runtime.getURL("/img/undraw_no_data_re_kwbl.svg")
+  }), h$1("h3", {
+    className: "Texta(center)"
+  }, "\u6682\u65F6\u6CA1\u6709\u5185\u5BB9")));
 }
 let PanelPage$1 = class PanelPage extends Page {
   constructor() {
@@ -173,6 +185,18 @@ var Router = {
     children: [{
       title: "📗本学期课表",
       path: "xkAction.do?actionType=6"
+    }, {
+      title: "📚历年课表",
+      path: "lnkbcxAction.do"
+    }, {
+      title: "选课公告",
+      path: "ggglAction.do?actionType=4"
+    }, {
+      title: "网上选课",
+      path: "xkAction.do"
+    }, {
+      title: "退课",
+      path: "xkAction.do?actionType=7"
     }]
   },
   personal: {
@@ -184,6 +208,12 @@ var Router = {
     }, {
       title: "学籍异动",
       path: "xjInfoAction.do?oper=ydxx"
+    }, {
+      title: "🏆奖惩信息",
+      path: "xjInfoAction.do?oper=jcxx"
+    }, {
+      title: "辅修方案注册",
+      path: "xsFabgsqAction.do?oper=faxdsq1"
     }]
   },
   exam: {
@@ -244,7 +274,7 @@ var Router = {
     title: "综合查询",
     path: "#Query",
     children: [{
-      title: "全部及格成绩",
+      title: "🪴全部及格成绩",
       path: "gradeLnAllAction.do?type=ln&oper=qbinfo&lnxndm=2022-2023%D1%A7%C4%EA%C7%EF(%C1%BD%D1%A7%C6%DA)"
     }, {
       title: "课程属性成绩",
@@ -255,12 +285,34 @@ var Router = {
     }, {
       title: "不及格成绩",
       path: "gradeLnAllAction.do?type=ln&oper=bjg"
-    }, {
-      title: "本学期成绩",
-      path: "bxqcjcxAction.do"
-    }, {
+    },
+    // {
+    // 	title: "本学期成绩",
+    // 	path: "bxqcjcxAction.do",
+    // },
+    {
       title: "方案完成情况",
       path: "gradeLnAllAction.do?type=ln&oper=lnfaqk&flag=zx"
+    }, {
+      title: "指导性教学计划",
+      path: "gradeLnAllAction.do?type=ln&oper=lnFajhKcCjInfo&lnxndm=2022-2023%D1%A7%C4%EA%C7%EF(%C1%BD%D1%A7%C6%DA)"
+    },
+    // {
+    // 	title: "本学期课程安排",
+    // 	path: "courseSearchAction.do?temp=1",
+    // },
+    {
+      title: "课程基本信息",
+      path: "kclbAction.do"
+    }, {
+      title: "收费标准查询",
+      path: "sfCxAction.do?oper=current"
+    }, {
+      title: "审查体系",
+      path: "scTxQueryAction.do?oper=CurrentScTxQuery"
+    }, {
+      title: "审查结论",
+      path: "scJlQueryAction.do?oper=CurrentScJlQuery"
     }]
   }
 };
@@ -269,7 +321,7 @@ var Frame = (({
   url,
   title
 }) => {
-  return h$1("div", null, h$1("h1", null, title), h$1("iframe", {
+  return h$1("div", null, h$1("iframe", {
     width: "100%",
     height: "100%",
     src: url
@@ -281,8 +333,8 @@ var Subpage = (({
 }) => {
   const [tab, setTab] = p(childRoute[0].path || "xjInfoAction.do?oper=xjxx");
   const tabRoute = childRoute.find(route => route.path == tab);
-  return h$1("section", null, h$1("div", {
-    className: "DIS(flex)"
+  return h$1("div", null, h$1("div", {
+    className: "DIS(flex) JC(center) tab-container"
   }, childRoute.map(route => {
     return h$1("div", {
       onClick: () => {
@@ -290,10 +342,12 @@ var Subpage = (({
       },
       className: `${tab == route.path ? "active" : ""} tab`
     }, route.title);
-  })), h$1(Frame, {
+  })), h$1("br", null), h$1("div", {
+    id: "framebody"
+  }, h$1(Frame, {
     url: tabRoute.path,
     title: tabRoute.title
-  }));
+  })));
 });
 
 function MainView() {
@@ -308,7 +362,7 @@ function MainView() {
   }, []);
   const sidebarStyle = {
     backgroundColor: "#333",
-    color: "#fff",
+    color: "var(--c-themed)",
     height: "100vh",
     padding: "0",
     width: "200px",

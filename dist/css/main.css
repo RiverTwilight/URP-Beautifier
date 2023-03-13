@@ -9,7 +9,6 @@
 
 body {
 	overflow-y: hidden;
-
 }
 
 .ub-validationField {
@@ -54,7 +53,7 @@ body {
 }
 
 .sidebar ul {
-	transform: translateY(-20px);
+	transform: translateY(-35px);
 }
 
 .sidebar {
@@ -78,6 +77,7 @@ body {
 #intereactive {
 	width: 100%;
 	padding: 20px 30px;
+	height: 95vh;
 }
 
 iframe,
@@ -94,8 +94,17 @@ frameset {
 }
 
 main {
-	min-width: 80vw;
+	min-width: 72vw;
 	max-width: 1400px;
+}
+
+.tab-container {
+	padding: 4px 2px;
+	border: 1px solid var(--border);
+	border-radius: 24px;
+	overflow-x: hidden;
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* Internet Explorer and Microsoft Edge */
 }
 
 .tab {
@@ -112,8 +121,20 @@ main {
 
 .tab.active {
 	background-color: var(--c-themed);
+	color: white;
 }
 
 .empty-notice {
-	margin-top: 30vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+}
+
+#framebody {
+	max-height: 100%;
+	border: 1px solid var(--border);
+	border-radius: 20px;
+	overflow: hidden;
+	scrollbar-width: none; 
 }

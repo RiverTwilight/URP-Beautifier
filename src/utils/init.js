@@ -32,6 +32,7 @@ const rawConfig = {
 			resources: [
 				"/img/logo_landscape_dark.png",
 				"/img/logo_landscape_light.png",
+				"/img/undraw_no_data_re_kwbl.svg",
 			],
 		},
 	],
@@ -42,8 +43,8 @@ const MATCHES = [
 	"http://jwxt.swpu.edu.cn/*",
 	"http://10.28.63.111:9001/*",
 	"http://10.28.63.111:9002/*",
-	"http://10.28.63.111/",
-	"http://10.28.63.116:8081/",
+	"http://10.28.63.111/*",
+	"http://10.28.63.116:8081/*",
 ];
 
 rawConfig["content_scripts"].forEach((script) => {

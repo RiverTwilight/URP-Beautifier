@@ -21,6 +21,22 @@ export default {
 				title: "📗本学期课表",
 				path: "xkAction.do?actionType=6",
 			},
+			{
+				title: "📚历年课表",
+				path: "lnkbcxAction.do",
+			},
+			{
+				title: "选课公告",
+				path: "ggglAction.do?actionType=4",
+			},
+			{
+				title: "网上选课",
+				path: "xkAction.do",
+			},
+			{
+				title: "退课",
+				path: "xkAction.do?actionType=7",
+			},
 		],
 	},
 	personal: {
@@ -34,6 +50,14 @@ export default {
 			{
 				title: "学籍异动",
 				path: "xjInfoAction.do?oper=ydxx",
+			},
+			{
+				title: "🏆奖惩信息",
+				path: "xjInfoAction.do?oper=jcxx",
+			},
+			{
+				title: "辅修方案注册",
+				path: "xsFabgsqAction.do?oper=faxdsq1",
 			},
 		],
 	},
@@ -112,7 +136,7 @@ export default {
 		path: "#Query",
 		children: [
 			{
-				title: "全部及格成绩",
+				title: "🪴全部及格成绩",
 				path: "gradeLnAllAction.do?type=ln&oper=qbinfo&lnxndm=2022-2023%D1%A7%C4%EA%C7%EF(%C1%BD%D1%A7%C6%DA)",
 			},
 			{
@@ -127,13 +151,37 @@ export default {
 				title: "不及格成绩",
 				path: "gradeLnAllAction.do?type=ln&oper=bjg",
 			},
-			{
-				title: "本学期成绩",
-				path: "bxqcjcxAction.do",
-			},
+			// {
+			// 	title: "本学期成绩",
+			// 	path: "bxqcjcxAction.do",
+			// },
 			{
 				title: "方案完成情况",
 				path: "gradeLnAllAction.do?type=ln&oper=lnfaqk&flag=zx",
+			},
+			{
+				title: "指导性教学计划",
+				path: "gradeLnAllAction.do?type=ln&oper=lnFajhKcCjInfo&lnxndm=2022-2023%D1%A7%C4%EA%C7%EF(%C1%BD%D1%A7%C6%DA)",
+			},
+			// {
+			// 	title: "本学期课程安排",
+			// 	path: "courseSearchAction.do?temp=1",
+			// },
+			{
+				title: "课程基本信息",
+				path: "kclbAction.do",
+			},
+			{
+				title: "收费标准查询",
+				path: "sfCxAction.do?oper=current",
+			},
+			{
+				title: "审查体系",
+				path: "scTxQueryAction.do?oper=CurrentScTxQuery",
+			},
+			{
+				title: "审查结论",
+				path: "scJlQueryAction.do?oper=CurrentScJlQuery",
 			},
 		],
 	},
