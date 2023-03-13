@@ -8,7 +8,7 @@ function MainView() {
 				<img
 					width={200}
 					src={chrome.runtime.getURL(
-						"/img/undraw_no_data_re_kwbl.svg"
+						"/img/sticker.webp"
 					)}
 				/>
 				<h3 className="Texta(center)">暂时没有内容</h3>

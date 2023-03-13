@@ -25,8 +25,12 @@ class Page {
   }
 }
 
-const LoginForm = () => {
+const LoginForm = ({
+  handleFocus
+}) => {
   const [codeImg, setCodeImg] = p("");
+  const [username, setUsername] = p("");
+  const [password, setPassword] = p("");
   h(() => {
     setCodeImg(`/validateCodeAction.do?random=${Math.random()}`);
   }, []);
@@ -64,7 +68,11 @@ const LoginForm = () => {
     name: "zjh",
     id: "username",
     className: "MW(100%)",
-    value: "",
+    onChange: e => {
+      console.log(e);
+      setUsername(e.target.value);
+    },
+    value: username,
     alt: "notnull"
   })), h$1("div", null, h$1("label", {
     for: "password"
@@ -72,7 +80,16 @@ const LoginForm = () => {
     type: "password",
     name: "mm",
     id: "password",
-    value: "",
+    onFocus: () => {
+      handleFocus(true);
+    },
+    onBlur: () => {
+      handleFocus(false);
+    },
+    onChange: e => {
+      setPassword(e.target.value);
+    },
+    value: password,
     alt: "notnull",
     className: "MW(100%)"
   })), h$1("br", null), h$1("label", {
@@ -101,6 +118,52 @@ const LoginForm = () => {
     onClick: () => login()
   }, "\u767B\u5F55"))));
 };
+const MainView$2 = () => {
+  const [focus, setFocus] = p(false);
+  return h$1("div", {
+    style: {
+      height: "100vh"
+    }
+  }, h$1("div", {
+    className: "DIS(flex) JC(center) FD(row) H(100%)"
+  }, h$1("div", {
+    id: "neko-warpper"
+  }, focus && h$1("img", {
+    className: "hider",
+    src: chrome.runtime.getURL("/img/hide.webp"),
+    alt: "URP",
+    border: "0"
+  }), !focus && h$1("img", {
+    className: "hider",
+    src: chrome.runtime.getURL("/img/look.webp"),
+    alt: "URP",
+    border: "0"
+  })), h$1("div", {
+    className: "DIS(flex) JC(center) FD(column)"
+  }, h$1("div", {
+    className: "ub-loginBox"
+  }, h$1("a", {
+    className: "darkOnly",
+    href: ""
+  }, h$1("img", {
+    src: chrome.runtime.getURL("/img/logo_landscape_dark.png"),
+    alt: "URP",
+    border: "0"
+  })), h$1("a", {
+    className: "lightOnly",
+    href: ""
+  }, h$1("img", {
+    src: chrome.runtime.getURL("/img/logo_landscape_light.png"),
+    alt: "URP",
+    border: "0"
+  })), h$1(LoginForm, {
+    handleFocus: setFocus
+  }), h$1("p", {
+    className: "copyright"
+  }, "\u7248\u6743\u6240\u6709 \xA9 \u5317\u4EAC\u6E05\u5143\u4F18\u8F6F\u79D1\u6280\u6709\u9650\u516C\u53F8", h$1("br", null), "\u4FDD\u7559\u6240\u6709\u6743\u5229\u3002", h$1("br", null), "Redesign with \u2764\uFE0F By \xA0", h$1("a", {
+    href: "https://github.com/rivertwilight"
+  }, "@RiverTwilight"))))));
+};
 class LoginPage extends Page {
   constructor() {
     super();
@@ -114,35 +177,7 @@ class LoginPage extends Page {
     this.originalPage.getElementsByTagName("form").item(0).name = "_loginForm";
   }
   injectNewPage() {
-    P(h$1("div", {
-      style: {
-        height: "100vh"
-      }
-    }, h$1("div", {
-      className: "DIS(flex) JC(center) FD(row) H(100%)"
-    }, h$1("div", {
-      className: "DIS(flex) JC(center) FD(column)"
-    }, h$1("div", {
-      className: "ub-loginBox"
-    }, h$1("a", {
-      className: "darkOnly",
-      href: ""
-    }, h$1("img", {
-      src: chrome.runtime.getURL("/img/logo_landscape_dark.png"),
-      alt: "URP",
-      border: "0"
-    })), h$1("a", {
-      className: "lightOnly",
-      href: ""
-    }, h$1("img", {
-      src: chrome.runtime.getURL("/img/logo_landscape_light.png"),
-      alt: "URP",
-      border: "0"
-    })), h$1(LoginForm, null), h$1("p", {
-      className: "copyright"
-    }, "\u7248\u6743\u6240\u6709 \xA9 \u5317\u4EAC\u6E05\u5143\u4F18\u8F6F\u79D1\u6280\u6709\u9650\u516C\u53F8", h$1("br", null), "\u4FDD\u7559\u6240\u6709\u6743\u5229\u3002", h$1("br", null), "Redesign with \u2764\uFE0F By \xA0", h$1("a", {
-      href: "https://github.com/rivertwilight"
-    }, "@RiverTwilight")))))), document.body);
+    P(h$1(MainView$2, null), document.body);
   }
 }
 
@@ -156,7 +191,7 @@ function MainView$1() {
     className: "empty-notice"
   }, h$1("img", {
     width: 200,
-    src: chrome.runtime.getURL("/img/undraw_no_data_re_kwbl.svg")
+    src: chrome.runtime.getURL("/img/sticker.webp")
   }), h$1("h3", {
     className: "Texta(center)"
   }, "\u6682\u65F6\u6CA1\u6709\u5185\u5BB9")));
@@ -412,12 +447,17 @@ function MainView() {
     onClick: handleSignout
   }, "\u6CE8\u9500"))), h$1("section", {
     style: contentStyle
-  }, h$1("section", {
+  }, h$1("div", {
     id: "intereactive"
   }, h$1(Subpage, {
     key: hash,
     childRoute: currentRoute.children
-  })))));
+  })))), h$1("img", {
+    id: "peeker",
+    src: chrome.runtime.getURL("/img/peek.webp"),
+    alt: "peeker",
+    border: "0"
+  }));
 }
 class PanelPage extends Page {
   constructor() {

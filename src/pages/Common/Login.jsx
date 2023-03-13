@@ -2,9 +2,10 @@ import { render, h, Component } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import Page from "../../utils/page";
 
-const LoginForm = () => {
+const LoginForm = ({ handleFocus }) => {
 	const [codeImg, setCodeImg] = useState("");
-
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
 	useEffect(() => {
 		setCodeImg(`/validateCodeAction.do?random=${Math.random()}`);
 	}, []);
@@ -25,7 +26,11 @@ const LoginForm = () => {
 					name="zjh"
 					id="username"
 					className="MW(100%)"
-					value=""
+					onChange={(e) => {
+						console.log(e);
+						setUsername(e.target.value);
+					}}
+					value={username}
 					alt="notnull"
 				></input>
 			</div>
@@ -36,7 +41,16 @@ const LoginForm = () => {
 					type="password"
 					name="mm"
 					id="password"
-					value=""
+					onFocus={() => {
+						handleFocus(true);
+					}}
+					onBlur={() => {
+						handleFocus(false);
+					}}
+					onChange={(e) => {
+						setPassword(e.target.value);
+					}}
+					value={password}
 					alt="notnull"
 					className="MW(100%)"
 				></input>
@@ -77,6 +91,69 @@ const LoginForm = () => {
 	);
 };
 
+const MainView = () => {
+	const [focus, setFocus] = useState(false);
+
+	return (
+		<div style={{ height: "100vh" }}>
+			<div className="DIS(flex) JC(center) FD(row) H(100%)">
+				<div id="neko-warpper">
+					{focus && (
+						<img
+							className="hider"
+							src={chrome.runtime.getURL("/img/hide.webp")}
+							alt="URP"
+							border="0"
+						/>
+					)}
+					{!focus && (
+						<img
+							className="hider"
+							src={chrome.runtime.getURL("/img/look.webp")}
+							alt="URP"
+							border="0"
+						/>
+					)}
+				</div>
+
+				<div className="DIS(flex) JC(center) FD(column)">
+					<div className="ub-loginBox">
+						<a className="darkOnly" href="">
+							<img
+								src={chrome.runtime.getURL(
+									"/img/logo_landscape_dark.png"
+								)}
+								alt="URP"
+								border="0"
+							/>
+						</a>
+						<a className="lightOnly" href="">
+							<img
+								src={chrome.runtime.getURL(
+									"/img/logo_landscape_light.png"
+								)}
+								alt="URP"
+								border="0"
+							/>
+						</a>
+						<LoginForm handleFocus={setFocus} />
+						<p className="copyright">
+							版权所有 © 北京清元优软科技有限公司
+							<br></br>
+							保留所有权利。
+							<br></br>
+							Redesign with ❤️ By &nbsp;
+							<a href="https://github.com/rivertwilight">
+								@RiverTwilight
+							</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};
+
 class LoginPage extends Page {
 	constructor() {
 		super();
@@ -93,46 +170,7 @@ class LoginPage extends Page {
 	}
 
 	injectNewPage() {
-		render(
-			<div style={{ height: "100vh" }}>
-				<div className="DIS(flex) JC(center) FD(row) H(100%)">
-					<div className="DIS(flex) JC(center) FD(column)">
-						<div className="ub-loginBox">
-							<a className="darkOnly" href="">
-								<img
-									src={chrome.runtime.getURL(
-										"/img/logo_landscape_dark.png"
-									)}
-									alt="URP"
-									border="0"
-								/>
-							</a>
-							<a className="lightOnly" href="">
-								<img
-									src={chrome.runtime.getURL(
-										"/img/logo_landscape_light.png"
-									)}
-									alt="URP"
-									border="0"
-								/>
-							</a>
-							<LoginForm />
-							<p className="copyright">
-								版权所有 © 北京清元优软科技有限公司
-								<br></br>
-								保留所有权利。
-								<br></br>
-								Redesign with ❤️ By &nbsp;
-								<a href="https://github.com/rivertwilight">
-									@RiverTwilight
-								</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>,
-			document.body
-		);
+		render(<MainView />, document.body);
 	}
 }
 

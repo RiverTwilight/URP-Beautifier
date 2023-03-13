@@ -141,3 +141,27 @@ main {
 	overflow: hidden;
 	scrollbar-width: none;
 }
+
+#peeker {
+	position: fixed;
+	left: 0;
+	height: 100px;
+	bottom: 0;
+	opacity: .7;
+	transform: translateX(-22px);
+}
+
+.hider {
+	opacity: 0.7;
+	margin-top: 100px;
+	height: 35vw;
+	width: 35vw;
+	bottom: 0;
+	position: absolute;
+}
+
+#neko-warpper {
+	width: 35vw;
+	height: 100vh;
+	position: relative;
+}

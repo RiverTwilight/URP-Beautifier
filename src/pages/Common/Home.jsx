@@ -61,14 +61,20 @@ function MainView() {
 					</div>
 				</nav>
 				<section style={contentStyle}>
-					<section id="intereactive">
+					<div id="intereactive">
 						<Subpage
 							key={hash}
 							childRoute={currentRoute.children}
 						/>
-					</section>
+					</div>
 				</section>
 			</main>
+			<img
+			id="peeker"
+				src={chrome.runtime.getURL("/img/peek.webp")}
+				alt="peeker"
+				border="0"
+			/>
 		</div>
 	);
 }
