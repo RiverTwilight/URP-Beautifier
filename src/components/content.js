@@ -3,8 +3,6 @@ import EmptyPage from "../pages/Common/Empty";
 import PanelPage from "../pages/Common/Home.jsx";
 
 (function main() {
-	console.log("Copy right @RiverTwilight");
-
 	disableStyle();
 
 	if (isLogged()) {
@@ -13,7 +11,6 @@ import PanelPage from "../pages/Common/Home.jsx";
 			"#tblHead",
 			"img[src='/img/icon/alert.gif']",
 		]);
-		formatStyle();
 
 		switch (window.location.pathname) {
 			case "/loginAction.do":
@@ -24,8 +21,10 @@ import PanelPage from "../pages/Common/Home.jsx";
 				if (message.length === 0) {
 					document.querySelector("#user").remove();
 				}
+				formatStyle();
 				new EmptyPage();
 			default:
+				formatStyle();
 				console.log("No page matched");
 		}
 	} else {

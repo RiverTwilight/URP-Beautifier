@@ -1,5 +1,5 @@
 import { render, h, Component } from "preact";
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useMemo } from "preact/hooks";
 import Page from "../../utils/page";
 import Router from "../../router/raw";
 import Subpage from "../../components/subpage";
@@ -31,8 +31,9 @@ function MainView() {
 		width: "100%",
 	};
 
-	const currentRoute = Object.values(Router).find(
-		(route) => route.path == hash
+	const currentRoute = useMemo(
+		() => Object.values(Router).find((route) => route.path == hash),
+		[hash]
 	);
 
 	const handleSignout = () => {
@@ -56,7 +57,7 @@ function MainView() {
 						))}
 					</ul>
 					<div className="DIS(flex) JC(center) signout">
-						<button onClick={handleSignout}>退出登录</button>
+						<button onClick={handleSignout}>注销</button>
 					</div>
 				</nav>
 				<section style={contentStyle}>
@@ -83,10 +84,6 @@ class PanelPage extends Page {
 	}
 
 	initPage() {
-		// const userinfo = this.originalPage.querySelectorAll(".leftuser01 td")[1].innerText;
-
-		// console.log(userinfo);
-
 		const originalBody = document.body;
 		const newBody = document.createElement("body");
 
