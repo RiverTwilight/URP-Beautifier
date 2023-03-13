@@ -8,13 +8,28 @@ import PanelPage from "../pages/Common/Home.jsx";
 	disableStyle();
 
 	if (isLogged()) {
-		removeScatters([".Linetop", "#tblHead", "img[src='/img/icon/alert.gif']"]);
+		removeScatters([
+			".Linetop",
+			"#tblHead",
+			"img[src='/img/icon/alert.gif']",
+		]);
 		const errorMessage = document.querySelectorAll("table.error");
-		if(errorMessage.length > 0){
-			errorMessage.forEach(item => {
+		const emptyMessage = Array.from(document.querySelectorAll("font[color='red']"))
+		console.log(emptyMessage)
+		if (
+			errorMessage.length > 0 ||
+			(emptyMessage.length > 0 &&
+				emptyMessage.some((message) =>
+					message.innerText.includes("暂时没公告")
+				))
+		) {
+			errorMessage.forEach((item) => {
 				item.remove();
-			})
-			new EmptyPage()
+			});
+			emptyMessage.forEach((item) => {
+				item.remove();
+			});
+			new EmptyPage();
 		}
 
 		switch (window.location.pathname) {
@@ -26,7 +41,7 @@ import PanelPage from "../pages/Common/Home.jsx";
 				if (message.length === 0) {
 					document.querySelector("#user").remove();
 				}
-				new EmptyPage()
+				new EmptyPage();
 			default:
 				console.log("No page matched");
 		}

@@ -17,7 +17,7 @@ function MainView() {
 	}, []);
 
 	const sidebarStyle = {
-		backgroundColor: "#333",
+		backgroundColor: "var(--siderbar-bg)",
 		color: "var(--c-themed)",
 		height: "100vh",
 		padding: "0",
@@ -78,11 +78,16 @@ class PanelPage extends Page {
 		super();
 		this.url = "/login";
 		this.title = "Login";
+		this.username = "";
 		this.initPage();
 		this.injectNewPage();
 	}
-
+	
 	initPage() {
+		// const userinfo = this.originalPage.querySelectorAll(".leftuser01 td")[1].innerText;
+	
+		// console.log(userinfo);
+
 		const originalBody = document.body;
 		const newBody = document.createElement("body");
 
@@ -90,6 +95,7 @@ class PanelPage extends Page {
 
 		this.originalPage = originalBody.innerHTML;
 		originalBody.innerHTML = "";
+
 	}
 
 	injectNewPage() {

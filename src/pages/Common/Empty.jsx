@@ -18,8 +18,9 @@ function MainView() {
 }
 
 class PanelPage extends Page {
-	constructor() {
+	constructor(emptyMessage) {
 		super();
+		this.emptyMessage = emptyMessage;
 		this.url = "/login";
 		this.title = "Login";
 		this.initPage();

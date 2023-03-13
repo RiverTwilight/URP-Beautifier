@@ -100,7 +100,7 @@ main {
 
 .tab-container {
 	padding: 4px 2px;
-	border: 1px solid var(--border);
+	border: 2px solid var(--border);
 	border-radius: 24px;
 	overflow-x: hidden;
 	scrollbar-width: none; /* Firefox */
@@ -133,7 +133,7 @@ main {
 
 #framebody {
 	max-height: 100%;
-	border: 1px solid var(--border);
+	border: 2px solid var(--border);
 	border-radius: 20px;
 	overflow: hidden;
 	scrollbar-width: none; 

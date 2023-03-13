@@ -18,6 +18,7 @@
 	--c-themed: #4589ee;
 	--highlight-border-radius: 7px;
 	--border-radius: 11px;
+	--siderbar-bg: var(--background-main);
 
 	--links: #0f6dff;
 	--background-body: #fff;
@@ -33,6 +34,7 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
+		--siderbar-bg: #333;
 		--c-themed: #4589ee;
 		--links: #4589ee;
 		--background-body: #0f0f0f;

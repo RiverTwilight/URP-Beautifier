@@ -148,8 +148,9 @@ function MainView$1() {
   }, "\u6682\u65F6\u6CA1\u6709\u5185\u5BB9")));
 }
 let PanelPage$1 = class PanelPage extends Page {
-  constructor() {
+  constructor(emptyMessage) {
     super();
+    this.emptyMessage = emptyMessage;
     this.url = "/login";
     this.title = "Login";
     this.initPage();
@@ -361,7 +362,7 @@ function MainView() {
     });
   }, []);
   const sidebarStyle = {
-    backgroundColor: "#333",
+    backgroundColor: "var(--siderbar-bg)",
     color: "var(--c-themed)",
     height: "100vh",
     padding: "0",
@@ -408,10 +409,15 @@ class PanelPage extends Page {
     super();
     this.url = "/login";
     this.title = "Login";
+    this.username = "";
     this.initPage();
     this.injectNewPage();
   }
   initPage() {
+    // const userinfo = this.originalPage.querySelectorAll(".leftuser01 td")[1].innerText;
+
+    // console.log(userinfo);
+
     const originalBody = document.body;
     const newBody = document.createElement("body");
     originalBody.parentNode.replaceChild(newBody, originalBody);
@@ -429,8 +435,13 @@ class PanelPage extends Page {
   if (isLogged()) {
     removeScatters([".Linetop", "#tblHead", "img[src='/img/icon/alert.gif']"]);
     const errorMessage = document.querySelectorAll("table.error");
-    if (errorMessage.length > 0) {
+    const emptyMessage = Array.from(document.querySelectorAll("font[color='red']"));
+    console.log(emptyMessage);
+    if (errorMessage.length > 0 || emptyMessage.length > 0 && emptyMessage.some(message => message.innerText.includes("暂时没公告"))) {
       errorMessage.forEach(item => {
+        item.remove();
+      });
+      emptyMessage.forEach(item => {
         item.remove();
       });
       new PanelPage$1();
