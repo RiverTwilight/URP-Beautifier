@@ -51,6 +51,7 @@ const LoginForm = () => {
 					id="validation"
 					type="text"
 					name="v_yzm"
+					autoComplete="off"
 					maxLength="4"
 					alt="notnull"
 				></input>
@@ -121,9 +122,9 @@ class LoginPage extends Page {
 								<br></br>
 								保留所有权利。
 								<br></br>
-								Redesign with ❤️ By 
+								Redesign with ❤️ By &nbsp;
 								<a href="https://github.com/rivertwilight">
-									&nbsp;@RiverTwilight
+									@RiverTwilight
 								</a>
 							</p>
 						</div>

@@ -83,6 +83,7 @@ const LoginForm = () => {
     id: "validation",
     type: "text",
     name: "v_yzm",
+    autoComplete: "off",
     maxLength: "4",
     alt: "notnull"
   }), h$1("div", {
@@ -139,9 +140,9 @@ class LoginPage extends Page {
       border: "0"
     })), h$1(LoginForm, null), h$1("p", {
       className: "copyright"
-    }, "\u7248\u6743\u6240\u6709 \xA9 \u5317\u4EAC\u6E05\u5143\u4F18\u8F6F\u79D1\u6280\u6709\u9650\u516C\u53F8", h$1("br", null), "\u4FDD\u7559\u6240\u6709\u6743\u5229\u3002", h$1("br", null), "Redesign with \u2764\uFE0F By", h$1("a", {
+    }, "\u7248\u6743\u6240\u6709 \xA9 \u5317\u4EAC\u6E05\u5143\u4F18\u8F6F\u79D1\u6280\u6709\u9650\u516C\u53F8", h$1("br", null), "\u4FDD\u7559\u6240\u6709\u6743\u5229\u3002", h$1("br", null), "Redesign with \u2764\uFE0F By \xA0", h$1("a", {
       href: "https://github.com/rivertwilight"
-    }, "\xA0@RiverTwilight")))))), document.body);
+    }, "@RiverTwilight")))))), document.body);
   }
 }
 
