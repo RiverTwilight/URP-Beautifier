@@ -19,9 +19,9 @@
 
 如果无法打开页面，请参考以下步骤：
 
-1. 下载 [release](https://github.com/RiverTwilight/URP-Beautifier/releases) 中的 zip 文件`，解压缩。
-2. 打开 Chorme 浏览器，地址栏输入 [chrome://extensions](chrome://extensions)，回车。
-3. 在打开的页面中，打开右上角的"开发者模式”选项。
+1. 下载 [release](https://github.com/RiverTwilight/URP-Beautifier/releases) 中的 zip 文件，解压缩。
+2. 打开 Chrome 浏览器，地址栏输入 [chrome://extensions](chrome://extensions)，回车。
+3. 在打开的页面中，打开右上角的 「开发者模式」 选项。
 4. 点击页面上方三个按钮中第一个，加载未打包的扩展程序。
 5. 选择之前解压的文件夹，完成。
 
@@ -29,8 +29,8 @@
 
 1. 下载 [release](https://github.com/RiverTwilight/URP-Beautifier/releases) 中的 zip 文件，解压缩。
 2. 打开 Edge 浏览器，地址栏输入 [edge://extensions](edge://extensions)，回车。
-3. 在打开的页面中，打开左侧的"开发人员模式"选项。
-4. 点击页面上方的"加载解压缩的扩展"。
+3. 在打开的页面中，打开左侧的 「开发人员模式」 选项。
+4. 点击页面上方的 「加载解压缩的扩展」。
 5. 选择解压的文件夹，完成。
 
 此处以 Chrome 和 Edge 为例，同时支持 Firefox 浏览器。
