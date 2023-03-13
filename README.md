@@ -8,6 +8,9 @@
 -   河北农业大学
 -   上海海洋大学
 
+![screenshot](./screenshots/poster/1.png)
+![screenshot](./screenshots/poster/2.png)
+
 ## 使用方法 Usage
 
 ### 如果你使用 Chrome
