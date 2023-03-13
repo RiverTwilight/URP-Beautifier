@@ -13,24 +13,7 @@ import PanelPage from "../pages/Common/Home.jsx";
 			"#tblHead",
 			"img[src='/img/icon/alert.gif']",
 		]);
-		const errorMessage = document.querySelectorAll("table.error");
-		const emptyMessage = Array.from(document.querySelectorAll("font[color='red']"))
-		console.log(emptyMessage)
-		if (
-			errorMessage.length > 0 ||
-			(emptyMessage.length > 0 &&
-				emptyMessage.some((message) =>
-					message.innerText.includes("暂时没公告")
-				))
-		) {
-			errorMessage.forEach((item) => {
-				item.remove();
-			});
-			emptyMessage.forEach((item) => {
-				item.remove();
-			});
-			new EmptyPage();
-		}
+		formatStyle();
 
 		switch (window.location.pathname) {
 			case "/loginAction.do":
@@ -69,4 +52,39 @@ function removeScatters(selectors) {
 
 function isLogged() {
 	return !document.title.includes("登录");
+}
+
+function formatStyle() {
+	const errorMessage = document.querySelectorAll("table.error");
+	const emptyMessage = Array.from(
+		document.querySelectorAll("font[color='red']")
+	);
+	if (
+		errorMessage.length > 0 ||
+		(emptyMessage.length > 0 &&
+			emptyMessage.some((message) =>
+				message.innerText.includes("暂时没公告")
+			))
+	) {
+		errorMessage.forEach((item) => {
+			item.remove();
+		});
+		emptyMessage.forEach((item) => {
+			item.remove();
+		});
+		new EmptyPage();
+	}
+
+	const narrowTable = document.getElementById("user");
+	const wideTable = document.getElementsByClassName("titleTop2");
+
+	if (narrowTable) {
+		narrowTable.style.width = "95vw";
+	}
+
+	if (wideTable) {
+		Array.from(wideTable).forEach((table) => {
+			table.style.margin = "0 auto";
+		});
+	}
 }

@@ -8,8 +8,9 @@ function MainView() {
 	const [hash, setHash] = useState("#Notice");
 
 	useEffect(() => {
-		if (window.location.hash !== "") {
-			setHash(window.location.hash);
+		if (window.location.hash === "") {
+			console.log("No hash");
+			window.location.hash = hash;
 		}
 		window.addEventListener("hashchange", () => {
 			setHash(window.location.hash);
@@ -47,9 +48,7 @@ function MainView() {
 							<li
 								key={item.path}
 								className={`${
-									window.location.hash == item.path
-										? "active"
-										: ""
+									hash == item.path ? "active" : ""
 								}`}
 							>
 								<a href={item.path}>{item.title}</a>
@@ -82,10 +81,10 @@ class PanelPage extends Page {
 		this.initPage();
 		this.injectNewPage();
 	}
-	
+
 	initPage() {
 		// const userinfo = this.originalPage.querySelectorAll(".leftuser01 td")[1].innerText;
-	
+
 		// console.log(userinfo);
 
 		const originalBody = document.body;
@@ -95,7 +94,6 @@ class PanelPage extends Page {
 
 		this.originalPage = originalBody.innerHTML;
 		originalBody.innerHTML = "";
-
 	}
 
 	injectNewPage() {

@@ -354,8 +354,9 @@ var Subpage = (({
 function MainView() {
   const [hash, setHash] = p("#Notice");
   h(() => {
-    if (window.location.hash !== "") {
-      setHash(window.location.hash);
+    if (window.location.hash === "") {
+      console.log("No hash");
+      window.location.hash = hash;
     }
     window.addEventListener("hashchange", () => {
       setHash(window.location.hash);
@@ -388,7 +389,7 @@ function MainView() {
     role: "list"
   }, Object.values(Router).map(item => h$1("li", {
     key: item.path,
-    className: `${window.location.hash == item.path ? "active" : ""}`
+    className: `${hash == item.path ? "active" : ""}`
   }, h$1("a", {
     href: item.path
   }, item.title)))), h$1("div", {
@@ -434,18 +435,7 @@ class PanelPage extends Page {
   disableStyle();
   if (isLogged()) {
     removeScatters([".Linetop", "#tblHead", "img[src='/img/icon/alert.gif']"]);
-    const errorMessage = document.querySelectorAll("table.error");
-    const emptyMessage = Array.from(document.querySelectorAll("font[color='red']"));
-    console.log(emptyMessage);
-    if (errorMessage.length > 0 || emptyMessage.length > 0 && emptyMessage.some(message => message.innerText.includes("暂时没公告"))) {
-      errorMessage.forEach(item => {
-        item.remove();
-      });
-      emptyMessage.forEach(item => {
-        item.remove();
-      });
-      new PanelPage$1();
-    }
+    formatStyle();
     switch (window.location.pathname) {
       case "/loginAction.do":
         new PanelPage(window.location.pathname);
@@ -476,4 +466,27 @@ function removeScatters(selectors) {
 }
 function isLogged() {
   return !document.title.includes("登录");
+}
+function formatStyle() {
+  const errorMessage = document.querySelectorAll("table.error");
+  const emptyMessage = Array.from(document.querySelectorAll("font[color='red']"));
+  if (errorMessage.length > 0 || emptyMessage.length > 0 && emptyMessage.some(message => message.innerText.includes("暂时没公告"))) {
+    errorMessage.forEach(item => {
+      item.remove();
+    });
+    emptyMessage.forEach(item => {
+      item.remove();
+    });
+    new PanelPage$1();
+  }
+  const narrowTable = document.getElementById("user");
+  const wideTable = document.getElementsByClassName("titleTop2");
+  if (narrowTable) {
+    narrowTable.style.width = "95vw";
+  }
+  if (wideTable) {
+    Array.from(wideTable).forEach(table => {
+      table.style.margin = "0 auto";
+    });
+  }
 }
