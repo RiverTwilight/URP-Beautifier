@@ -97,7 +97,7 @@ class LoginPage extends Page {
 				<div className="DIS(flex) JC(center) FD(row) H(100%)">
 					<div className="DIS(flex) JC(center) FD(column)">
 						<div className="ub-loginBox">
-							<a href="https://ibb.co/VQfvJ2C">
+							<a href="">
 								<img
 									src={chrome.runtime.getURL(
 										"/img/logo_landscape_dark.png"

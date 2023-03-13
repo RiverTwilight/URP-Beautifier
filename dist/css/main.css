@@ -92,6 +92,9 @@ frameset {
 	left: 0;
 	right: 0;
 }
+.signout button {
+	color: rgb(194, 86, 86) !important;
+}
 
 main {
 	min-width: 72vw;
@@ -136,5 +139,5 @@ main {
 	border: 2px solid var(--border);
 	border-radius: 20px;
 	overflow: hidden;
-	scrollbar-width: none; 
+	scrollbar-width: none;
 }
