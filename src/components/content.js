@@ -23,6 +23,25 @@ import PanelPage from "../pages/Common/Home.jsx";
 				}
 				formatStyle();
 				new EmptyPage();
+				break;
+			case "/lnkbcxAction.do":
+				const oldButtons = Array.from(
+					document.querySelectorAll("#btnSearch")
+				);
+
+				console.log(oldButtons)
+
+				if (oldButtons.length > 0) {
+					oldButtons.forEach((parent) => {
+						let newButton = document.createElement("button");
+						newButton.onclick = parent.onclick;
+						newButton.innerText = "查询";
+						parent.after(newButton);
+						parent.remove()
+					});
+				}
+
+				break;
 			default:
 				formatStyle();
 				console.log("No page matched");
