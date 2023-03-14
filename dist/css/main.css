@@ -149,6 +149,12 @@ main {
 	bottom: 0;
 	opacity: .7;
 	transform: translateX(-22px);
+	transition: transform .3s;
+	cursor: grab;
+}
+
+#peeker:hover{
+	transform: scale(1.2, 1.2);
 }
 
 .hider {
