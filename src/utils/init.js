@@ -10,14 +10,7 @@ const rawConfig = {
 		48: "./icon/android-icon-48x48.png",
 		128: "./icon/icon-128.png",
 	},
-	permissions: ["activeTab", "contextMenus", "scripting"],
-	background: {
-		service_worker: "background.js",
-	},
-	action: {
-		default_popup: "popup.html",
-		default_title: "Download the score on this page.",
-	},
+	permissions: [],
 	content_scripts: [
 		{
 			matches: [],

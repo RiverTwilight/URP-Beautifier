@@ -497,17 +497,16 @@ class PanelPage extends Page {
         new PanelPage$1();
         break;
       case "/lnkbcxAction.do":
-        const oldButtons = Array.from(document.querySelectorAll("#btnSearch"));
-        console.log(oldButtons);
-        if (oldButtons.length > 0) {
-          oldButtons.forEach(parent => {
-            let newButton = document.createElement("button");
-            newButton.onclick = parent.onclick;
-            newButton.innerText = "查询";
-            parent.after(newButton);
-            parent.remove();
-          });
-        }
+        formatButton();
+        break;
+      case "/jskbcxAction.do":
+        formatButton();
+        break;
+      case "/lskbcxAction.do":
+        formatButton();
+        break;
+      case "/kckbcxAction.do":
+        formatButton();
         break;
       default:
         formatStyle();
@@ -551,6 +550,19 @@ function formatStyle() {
   if (wideTable) {
     Array.from(wideTable).forEach(table => {
       table.style.margin = "0 auto";
+    });
+  }
+}
+function formatButton() {
+  const oldButtons = Array.from(document.querySelectorAll("#btnSearch"));
+  if (oldButtons.length > 0) {
+    console.info("Old button detected!");
+    oldButtons.forEach(parent => {
+      let newButton = document.createElement("button");
+      newButton.onclick = parent.onclick;
+      newButton.innerText = "查询";
+      parent.after(newButton);
+      parent.remove();
     });
   }
 }
