@@ -4,7 +4,6 @@ const rawConfig = {
 	name: "URP Beautifier",
 	manifest_version: 3,
 	version: "1.0",
-	host_permissions: [],
 	icons: {
 		16: "./icon/android-icon-36x36.png",
 		48: "./icon/android-icon-48x48.png",
@@ -52,6 +51,6 @@ rawConfig["web_accessible_resources"].forEach((script) => {
 	script.matches = MATCHES;
 });
 
-rawConfig["host_permissions"] = MATCHES;
+// rawConfig["host_permissions"] = MATCHES;
 
 fs.writeFileSync("./dist/manifest.json", JSON.stringify(rawConfig));
