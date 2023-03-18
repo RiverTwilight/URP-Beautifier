@@ -15,7 +15,7 @@
 
 ### 如果你使用 Chrome
 
-点击链接访问 [chrome 插件商店](https://chrome.google.com/webstore/category/extensions?hl=en-US) 安装即可。
+点击链接访问 [chrome 插件商店](https://chrome.google.com/webstore/detail/urp-beautifier/iplofmnlmkbebfbihplgjkalkbbpiapm?hl=en-US) 安装即可。
 
 如果无法打开页面，请参考以下步骤：
 
