@@ -1500,13 +1500,13 @@ select {
 }
 
 // ==UserScript==
-// @name         New Userscript
+// @name         URP-Beautifier
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  try to take over the world!
-// @author       You
-// @match        http://*/*
-// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @description  URP 教务系统全面美化插件 | Make your URP education system more elegant.
+// @author       RiverTwilight
+// @match        http://10.28.63.111:9002/*
+// @match        http://10.28.63.111:9001/*
 // @grant        none
 // ==/UserScript==
 injectCss();
