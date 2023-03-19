@@ -15,7 +15,7 @@
 
 ### 2. 使用油猴安装
 
-下载打包好的[油猴脚本](/tampermonkey/bundle.js)，导入油猴即可。
+下载打包好的[油猴脚本](/tampermonkey/bundle.js)，导入油猴即可。由于图片使用外部链接，可能加载速度稍慢。
 
 ### 3. 使用 Chrome 手动安装
 
@@ -44,6 +44,11 @@ npm run dev
 # Or
 yarn run dev
 ```
+
+如果你需要添加更多适配网站，请更新两个文件：
+
+-   [/src/index.tampermonkey.js](/src/index.tampermonkey.js) 中的头部 meta 标签
+-   [/src/utils/init.js](/src/utils/init.js) 中的 MATCH 变量
 
 ## About
 
