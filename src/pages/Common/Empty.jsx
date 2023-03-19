@@ -1,5 +1,6 @@
 import { render, h, Component } from "preact";
 import Page from "../../utils/page";
+import getImage from "../../utils/getImage";
 
 function MainView() {
 	return (
@@ -7,7 +8,7 @@ function MainView() {
 			<div className="empty-notice">
 				<img
 					width={200}
-					src={chrome.runtime.getURL(
+					src={getImage(
 						"/img/sticker.webp"
 					)}
 				/>

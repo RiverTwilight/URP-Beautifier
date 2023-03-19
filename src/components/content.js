@@ -2,7 +2,7 @@ import LoginPage from "../pages/Common/Login.jsx";
 import EmptyPage from "../pages/Common/Empty";
 import PanelPage from "../pages/Common/Home.jsx";
 
-(function main() {
+function main() {
 	disableStyle();
 
 	if (isLogged()) {
@@ -43,7 +43,7 @@ import PanelPage from "../pages/Common/Home.jsx";
 	} else {
 		new LoginPage(window.location.pathname);
 	}
-})();
+}
 
 function disableStyle() {
 	document
@@ -115,3 +115,5 @@ function formatButton() {
 		});
 	}
 }
+
+export default main

@@ -3,6 +3,7 @@ import { useState, useEffect, useMemo } from "preact/hooks";
 import Page from "../../utils/page";
 import Router from "../../router/raw";
 import Subpage from "../../components/subpage";
+import getImage from "../../utils/getImage";
 
 function MainView() {
 	const [hash, setHash] = useState("#Notice");
@@ -71,7 +72,7 @@ function MainView() {
 			</main>
 			<img
 			id="peeker"
-				src={chrome.runtime.getURL("/img/peek.webp")}
+				src={getImage("/img/peek.webp")}
 				alt="peeker"
 				border="0"
 			/>

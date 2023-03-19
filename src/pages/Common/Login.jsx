@@ -1,6 +1,7 @@
 import { render, h, Component } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import Page from "../../utils/page";
+import getImage from "../../utils/getImage";
 
 const LoginForm = ({ handleFocus }) => {
 	const [codeImg, setCodeImg] = useState("");
@@ -101,7 +102,7 @@ const MainView = () => {
 					{focus && (
 						<img
 							className="hider"
-							src={chrome.runtime.getURL("/img/hide.webp")}
+							src={getImage("/img/hide.webp")}
 							alt="URP"
 							border="0"
 						/>
@@ -109,7 +110,7 @@ const MainView = () => {
 					{!focus && (
 						<img
 							className="hider"
-							src={chrome.runtime.getURL("/img/look.webp")}
+							src={getImage("/img/look.webp")}
 							alt="URP"
 							border="0"
 						/>
@@ -120,7 +121,7 @@ const MainView = () => {
 					<div className="ub-loginBox">
 						<a className="darkOnly" href="">
 							<img
-								src={chrome.runtime.getURL(
+								src={getImage(
 									"/img/logo_landscape_dark.png"
 								)}
 								alt="URP"
@@ -129,7 +130,7 @@ const MainView = () => {
 						</a>
 						<a className="lightOnly" href="">
 							<img
-								src={chrome.runtime.getURL(
+								src={getImage(
 									"/img/logo_landscape_light.png"
 								)}
 								alt="URP"

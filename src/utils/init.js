@@ -54,3 +54,35 @@ rawConfig["web_accessible_resources"].forEach((script) => {
 // rawConfig["host_permissions"] = MATCHES;
 
 fs.writeFileSync("./dist/manifest.json", JSON.stringify(rawConfig));
+
+const rawBoltCss = fs.readFileSync("./dist/css/bolt.css", "utf-8");
+const rawMainCss = fs.readFileSync("./dist/css/main.css", "utf-8");
+const rawGloabalCss = fs.readFileSync("./dist/css/global.css", "utf-8");
+
+const injectScript = `
+
+function GM_addStyle(css) {
+    var head, style;
+    head = document.getElementsByTagName('head')[0];
+    if (!head) { return; }
+    style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = css;
+    head.appendChild(style);
+}
+
+export default function injectCss() {
+	GM_addStyle(\`
+	
+		${rawBoltCss}
+		
+		${rawMainCss}
+	\`);
+
+	GM_addStyle(\`
+		${rawGloabalCss.replace(/\\/g, '\\\\')}
+	\`);
+}
+`;
+
+fs.writeFileSync("./tampermonkey/injectCss.js", injectScript);
