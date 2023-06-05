@@ -42,7 +42,7 @@ body {
 	font-size: 0.9em;
 }
 
-.sidebar li {
+.sidebar .navbar-item {
 	height: 50px;
 	width: 100%;
 	line-height: 50px;
@@ -50,9 +50,10 @@ body {
 	font-size: 1.1em;
 	text-align: center;
 	font-weight: bolder;
+	position: relative;
 }
 
-.sidebar ul {
+.sidebar .navbar-menu {
 	transform: translateY(-40px);
 }
 
@@ -62,12 +63,56 @@ body {
 	justify-content: center;
 }
 
-.sidebar li:hover {
+.navbar-item-text:hover {
 	background-color: var(--background-main);
 }
 
-.sidebar li.active {
+/** Hide the innter corner when hovering ***/
+.navbar-item-text:hover:before {
+	top: 0px;
+}
+
+.navbar-item-text:hover:after {
+	bottom: 0px;
+	z-index: 3;
+}
+
+.navbar-item-text:hover:after,
+.navbar-item-text:hover:before {
+	content: " ";
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	right: 0;
+	z-index: 3;
+	background: var(--background-main)	
+}
+
+/** Inner-corner's backgronnd ***/
+
+.navbar-item-text.active {
 	background-color: var(--background-body);
+}
+
+.navbar-item-text.active:before {
+	top: -15px;
+	border-bottom-right-radius: 100%;
+}
+
+.navbar-item-text.active:after,
+.navbar-item-text.active:before {
+	content: " ";
+	position: absolute;
+	background: var(--siderbar-bg);
+	width: 15px;
+	height: 15px;
+	right: 0;
+	z-index: 2;
+}
+
+.navbar-item-text.active:after {
+	bottom: -15px;
+	border-top-right-radius: 100%;
 }
 
 .sidebar a {
@@ -104,7 +149,7 @@ main {
 .tab-container {
 	padding: 4px 2px;
 	border: 2px solid var(--border);
-	border-radius: 24px;
+	border-radius: 15px;
 	overflow-x: hidden;
 	scrollbar-width: none; /* Firefox */
 	-ms-overflow-style: none; /* Internet Explorer and Microsoft Edge */
@@ -147,13 +192,13 @@ main {
 	left: 0;
 	height: 100px;
 	bottom: 0;
-	opacity: .7;
+	opacity: 0.7;
 	transform: translateX(-22px);
-	transition: transform .3s;
+	transition: transform 0.3s;
 	cursor: grab;
 }
 
-#peeker:hover{
+#peeker:hover {
 	transform: scale(1.2, 1.2);
 }
 
@@ -170,4 +215,24 @@ main {
 	width: 35vw;
 	height: 100vh;
 	position: relative;
+}
+
+.inner-corner {
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	background: var(--background-body);
+}
+
+.bottom-corner {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	z-index: 1;
+}
+
+.top-corner {
+	position: absolute;
+	bottom: 100%;
+	right: 0;
 }

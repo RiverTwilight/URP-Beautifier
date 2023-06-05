@@ -1,6 +1,6 @@
 {
 	"name": "urp-beautifier",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "本插件重新设计了 URP 教务系统的页面，更加符合现代审美。",
 	"main": "background.js",
 	"type": "module",

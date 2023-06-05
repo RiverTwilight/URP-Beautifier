@@ -45,18 +45,25 @@ function MainView() {
 		<div className="DIS(flex) JC(center)">
 			<main className="DIS(flex)">
 				<nav style={sidebarStyle} className="sidebar">
-					<ul role="list">
+					<div className="navbar-menu" role="list">
 						{Object.values(Router).map((item) => (
-							<li
-								key={item.path}
-								className={`${
-									hash == item.path ? "active" : ""
-								}`}
-							>
-								<a href={item.path}>{item.title}</a>
-							</li>
+							<div className="navbar-item" key={item.path}>
+								{hash == item.path && (
+									<div className="inner-corner top-corner"></div>
+								)}
+								<div
+									className={`${
+										hash == item.path ? "active" : ""
+									} navbar-item-text`}
+								>
+									<a href={item.path}>{item.title}</a>
+								</div>
+								{hash == item.path && (
+									<div className="inner-corner bottom-corner"></div>
+								)}
+							</div>
 						))}
-					</ul>
+					</div>
 					<div className="DIS(flex) JC(center) signout">
 						<button onClick={handleSignout}>注销</button>
 					</div>
@@ -71,7 +78,7 @@ function MainView() {
 				</section>
 			</main>
 			<img
-			id="peeker"
+				id="peeker"
 				src={getImage("/img/peek.webp")}
 				alt="peeker"
 				border="0"

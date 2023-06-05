@@ -6,6 +6,7 @@ function main() {
 	disableStyle();
 
 	if (isLogged()) {
+		
 		removeScatters([
 			".Linetop",
 			"#tblHead",
