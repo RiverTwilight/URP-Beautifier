@@ -42,13 +42,21 @@
 ```bash
 npm run dev
 # Or
-yarn run dev
+yarn run dev # 仅支持 yarn 1
 ```
 
 如果你需要添加更多适配网站，请更新两个文件：
 
 -   [/src/index.tampermonkey.js](/src/index.tampermonkey.js) 中的头部 meta 标签
 -   [/src/utils/init.js](/src/utils/init.js) 中的 MATCH 变量
+
+### 使用 Chrome 调试
+
+将 dist 文件夹加入插件列表即可。
+
+插件的工作原理是注入一个脚本到页面上。
+
+隐藏原有页面 -> 注入通用美化 CSS -> Preact 创建新页面 -> 使用 iframe 导航
 
 ## About
 
